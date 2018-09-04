@@ -43,7 +43,7 @@ public class Person3 {
 	 */
 	private String calc(String input) {
         String backwards = "";
-        for( int x = input.length() - 1 ; x >= 0 ; x-- ) {
+        for (int x = input.length() - 1 ; x >= 0 ; x--) {
             backwards = backwards + input.charAt(x);
         }
         return backwards;
