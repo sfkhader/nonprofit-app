@@ -8,6 +8,7 @@ package edu.gatech.oad.antlab.person;
  *  @author Bob
  *  @version 1.1
  */
+///random comment fjklsdfjsdlk
 public class Person1 {
   /** Holds the persons real name */
   private String name;
