@@ -1,2 +1,2 @@
 Tahirah Ahmad
-tahmad8@gate
+tahmad8@gatech.edu
