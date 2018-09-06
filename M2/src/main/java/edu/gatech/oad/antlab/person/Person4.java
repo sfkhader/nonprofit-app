@@ -11,16 +11,16 @@ package edu.gatech.oad.antlab.person;
 public class Person4 {
   /** Holds the persons real name */
   private String name;
-    /**
-     * The constructor, takes in the persons
-     * name
-     * @param pname the person's real name
-     */
+ /**
+ * The constructor, takes in the persons
+ * name
+ * @param pname the person's real name
+ */
   public Person4(String pname) {
     name = pname;
   }
     /**
-     * This method should return a strin  
+     * This method should return a string
      * where each character is 1 greater 
      * than its previous value.  So
      * given "abc123" it should return
@@ -38,7 +38,6 @@ public class Person4 {
       	newstring += mychar;
       }
       return newstring;
-    }
     
     /**
      * Return a string rep of this object
