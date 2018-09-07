@@ -38,7 +38,7 @@ public class Person4 {
       	newstring += mychar;
       }
       return newstring;
-    
+    }
     /**
      * Return a string rep of this object
      * that varies with an input string
