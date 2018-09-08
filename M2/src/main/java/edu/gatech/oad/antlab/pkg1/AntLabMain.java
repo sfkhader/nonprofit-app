@@ -55,28 +55,27 @@ import edu.gatech.oad.antlab.pkg2.*;
         String toPrint = 
             ant11.getMessage() + ant12.getMessage() + ant21.getMessage()
           + ant22.getMessage() + ant31.getMessage();
-		  //Person1 replace P1 with your name
-		  //and gburdell1 with your gt id
-
-		  Person1 p1 = new Person1("Shahnaaz");
-          toPrint += p1.toString("skhader9");
           
-		  //Person2 replace P2 with your name
-		  //and gburdell with your gt id
-		  Person2 p2 = new Person2("Samia");
-		  toPrint += p2.toString("skhan340");
-		  //Person3 replace P3 with your name
-		  //and gburdell3 with your gt id
-		  Person3 p3 = new Person3("Tahirah Ahmad");
-		  toPrint += p3.toString("tahmad8");
-                  //Person4 replace P4 with your name
-                  //and gburdell4 with your gt id
-                  Person4 p4 = new Person4("Rwan Hayek");
-                  toPrint += p4.toString("rhayek3");
-                  //Person5 replace P4 with your name
-                  //and gburdell5 with your gt id
-                  Person5 p5 = new Person5("Stephen Kamali");
-                  toPrint += p5.toString("skamali6");
+        //Person1 replace P1 with your name
+		//and gburdell1 with your gt id
+		Person1 p1 = new Person1("Shahnaaz");
+        toPrint += p1.toString("skhader9");
+		//Person2 replace P2 with your name
+		//and gburdell with your gt id
+		Person2 p2 = new Person2("Samia");
+		toPrint += p2.toString("skhan340");
+		//Person3 replace P3 with your name
+		//and gburdell3 with your gt id
+		Person3 p3 = new Person3("Tahirah Ahmad");
+		toPrint += p3.toString("tahmad8");
+        //Person4 replace P4 with your name
+        //and gburdell4 with your gt id
+        Person4 p4 = new Person4("Rwan Hayek");
+        toPrint += p4.toString("rhayek3");
+        //Person5 replace P4 with your name
+        //and gburdell5 with your gt id
+        Person5 p5 = new Person5("Stephen Kamali");
+        toPrint += p5.toString("skamali6");
 		  
         System.out.println(toPrint);
         
