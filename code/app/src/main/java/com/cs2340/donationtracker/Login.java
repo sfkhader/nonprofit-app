@@ -12,7 +12,7 @@ import android.app.Activity;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
-    Button loginButton;
+    Button loginButton, bCancel;
     EditText editPW, editUser;
 
 
@@ -26,10 +26,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         editUser = (EditText) findViewById(R.id.editUser);
         editPW = (EditText) findViewById(R.id.editPW);
         loginButton = (Button) findViewById(R.id.loginButton);
+        bCancel = (Button) findViewById(R.id.bCancel);
 
         //now we set an on click listener, which watches for when the user hits the login button
         //notifies the onClick method below
         loginButton.setOnClickListener(this);
+        bCancel.setOnClickListener(this);
 
     }
 
@@ -56,7 +58,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 editPW.setError("wrong password");
             }
 
-            return;
         }
+        //if cancel button is hit, go back to the welcome page
+        if (v.getId() == R.id.bCancel) {
+            Intent goback = new Intent(this, LoginPage.class);
+            startActivity(goback);
+
+        }
+        return;
     }
 }
