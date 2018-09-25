@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         //issue with this method is that it goes off if we have many on click listeners, and
-        //we dont kno why it went off. the if statement takes care of that
+        //we don't know why it went off. the if statement takes care of that
         //handles for all buttons, have to use if to see which is used
         if (v.getId() == R.id.loginButton) {
             //this is what happens when the login button is clicked
