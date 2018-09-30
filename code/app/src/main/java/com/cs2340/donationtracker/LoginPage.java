@@ -39,6 +39,8 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         } else if (v.getId() == R.id.register) {
             //what happens when the register button is clicked
 //            navigateUpTo(new Intent(this, Login.class));
+            Intent openRegister = new Intent(this, RegistrationPage.class);
+            startActivity(openRegister);
 
             return;
         }
