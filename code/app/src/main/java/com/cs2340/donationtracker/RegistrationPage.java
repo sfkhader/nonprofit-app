@@ -22,7 +22,7 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
     Button registerButton, cancelButton;
     EditText editPW, editUser, editName;
     Spinner userType;
-    public ArrayList<User> users;
+    public ArrayList<User> usersList;
 
     class User {
         String username;
@@ -70,7 +70,7 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
 
             User newUser = new User(editUser.getText().toString(), editPW.getText().toString(),
                     userType.getSelectedItem().toString());
-            users.add(newUser);
+            usersList.add(newUser);
             Intent openApp = new Intent(this, AppActivity.class);
             startActivity(openApp);
 
