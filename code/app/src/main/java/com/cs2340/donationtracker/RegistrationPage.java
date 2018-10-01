@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class RegistrationPage extends AppCompatActivity implements View.OnClickListener{
 
-    Button registerButton, bCancel;
+    Button registerButton, cancelButton;
     EditText editPW, editUser, editName;
     Spinner userType;
     public ArrayList<User> users;
@@ -47,18 +47,17 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
         editName = (EditText) findViewById(R.id.nameField);
 
         registerButton = (Button) findViewById(R.id.registerButton);
-        bCancel = (Button) findViewById(R.id.cancelButton);
+        cancelButton = (Button) findViewById(R.id.cancelButton);
 
         userType = (Spinner) findViewById(R.id.spinner);
-        //now we set an on click listener, which watches for when the user hits the login button
-        //notifies the onClick method below
+
         String[] userTypes = {"User", "Location Employee", "Admin"};
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, userTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         userType.setAdapter(adapter);
 
         registerButton.setOnClickListener(this);
-        bCancel.setOnClickListener(this);
+        cancelButton.setOnClickListener(this);
 
     }
 
@@ -68,18 +67,18 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
         //we don't know why it went off. the if statement takes care of that
         //handles for all buttons, have to use if to see which is used
         if (v.getId() == R.id.registerButton) {
-            //this is what happens when the login button is clicked
-            //new intent for entering the app
-            Intent openApp = new Intent(this, AppActivity.class);
-            User newUser = new User(editUser.getText().toString(), editPW.getText().toString(), userType.getSelectedItem().toString());
-            users.add(newUser);
 
+            User newUser = new User(editUser.getText().toString(), editPW.getText().toString(),
+                    userType.getSelectedItem().toString());
+            users.add(newUser);
+            Intent openApp = new Intent(this, AppActivity.class);
+            startActivity(openApp);
 
         }
         //if cancel button is hit, go back to the welcome page
-        if (v.getId() == R.id.bCancel) {
-            Intent goback = new Intent(this, LoginPage.class);
-            startActivity(goback);
+        if (v.getId() == R.id.cancelButton) {
+            Intent goBack = new Intent(this, LoginPage.class);
+            startActivity(goBack);
 
         }
         return;
