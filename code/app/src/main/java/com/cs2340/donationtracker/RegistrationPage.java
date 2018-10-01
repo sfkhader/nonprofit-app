@@ -15,6 +15,12 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.app.Activity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class RegistrationPage extends AppCompatActivity implements View.OnClickListener{
@@ -22,7 +28,8 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
     Button registerButton, cancelButton;
     EditText editPW, editUser, editName;
     Spinner userType;
-    public ArrayList<User> usersList;
+    DatabaseReference mDatabase;
+    //public ArrayList<User> usersList;
 
     class User {
         String username;
@@ -50,6 +57,7 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
         cancelButton = (Button) findViewById(R.id.cancelButton);
 
         userType = (Spinner) findViewById(R.id.spinner);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         String[] userTypes = {"User", "Location Employee", "Admin"};
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, userTypes);
@@ -70,7 +78,8 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
 
             User newUser = new User(editUser.getText().toString(), editPW.getText().toString(),
                     userType.getSelectedItem().toString());
-            usersList.add(newUser);
+            mDatabase.child("users").child(editUser.getText().toString()).setValue(newUser);
+
             Intent openApp = new Intent(this, AppActivity.class);
             startActivity(openApp);
 
