@@ -18,7 +18,10 @@ import android.app.Activity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -31,16 +34,7 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
     DatabaseReference mDatabase;
     //public ArrayList<User> usersList;
 
-    class User {
-        String username;
-        String password;
-        String userType;
-        User(String username, String password, String userType) {
-            this.username = username;
-            this.password = password;
-            this.userType = userType;
-        }
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +70,9 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
         //handles for all buttons, have to use if to see which is used
         if (v.getId() == R.id.registerButton) {
 
-            User newUser = new User(editUser.getText().toString(), editPW.getText().toString(),
-                    userType.getSelectedItem().toString());
+            User newUser = new User(editName.getText().toString(),
+                                    editPW.getText().toString(),
+                                    userType.getSelectedItem().toString());
             mDatabase.child("users").child(editUser.getText().toString()).setValue(newUser);
 
             Intent openApp = new Intent(this, AppActivity.class);

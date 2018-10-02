@@ -60,7 +60,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             ref.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                    RegistrationPage.User user = dataSnapshot.getValue(RegistrationPage.User.class);
+                    User user = dataSnapshot.getValue(User.class);
                 }
 
                 @Override
