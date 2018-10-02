@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "597822707921",
+    "firebase_url": "https://nonprofit-app-de2cb.firebaseio.com",
+    "project_id": "nonprofit-app-de2cb",
+    "storage_bucket": "nonprofit-app-de2cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597822707921:android:ae8b41d46c8668a5",
+        "android_client_info": {
+          "package_name": "com.cs2340.donationtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597822707921-q3ejfvg7cdlfc0notejfm4b30s8i3l1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd5OwjO6aja9FE1ftESyRGWiKI1bPcpXw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
