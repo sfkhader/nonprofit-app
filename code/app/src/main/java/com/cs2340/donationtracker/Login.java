@@ -1,6 +1,9 @@
 package com.cs2340.donationtracker;
 
 import android.content.Intent;
+import android.renderscript.Sampler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +23,7 @@ import com.google.firebase.database.ChildEventListener;
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
     Button loginButton, bCancel;
-    EditText editPW, editUser;
+    EditText editPW, editUser, error;
     DatabaseReference mDatabase;
 
 
@@ -53,51 +56,32 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         if (v.getId() == R.id.loginButton) {
             //this is what happens when the login button is clicked
             //new intent for entering the app
-            Intent openApp = new Intent(this, AppActivity.class);
-
-            final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference ref = database.getReference("users");
-            ref.addChildEventListener(new ChildEventListener() {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            mDatabase.child("users").child("password").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                    User user = dataSnapshot.getValue(User.class);
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String username = dataSnapshot.getKey();
+                    if (username == editUser.getText().toString()) {
+                        if (dataSnapshot.toString() == editPW.getText().toString()) {
+                            Intent openApp = new Intent(Login.this, AppActivity.class);
+                            startActivity(openApp);
+                        } else if (dataSnapshot.toString() != editPW.getText().toString()) {
+                            error.setError("wrong password");
+                        }
+                    } else if (username != editUser.getText().toString()){
+                        error.setError("wrong username");
+                    }
+
                 }
 
                 @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {}
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {}
+                public void onCancelled(@NonNull DatabaseError databaseError) {}
             });
-            if (editPW.getText().toString().equals("pass")
-                    && editUser.getText().toString().equals("user")) {
-                startActivity(openApp);
-                //return;
-            }
-            //error in field if wrong username
-            else if(!(editUser.getText().toString().equals("user"))){
-                editUser.setError("wrong username");
-            }
-            //error in field if wrong password
-            else if(!(editPW.getText().toString().equals("pass"))){
-                editPW.setError("wrong password");
-            }
-
         }
         //if cancel button is hit, go back to the welcome page
         if (v.getId() == R.id.bCancel) {
-            Intent goback = new Intent(this, LoginPage.class);
-            startActivity(goback);
-
+            Intent goBack = new Intent(this, LoginPage.class);
+            startActivity(goBack);
         }
-
-
-        return;
     }
 }

@@ -7,24 +7,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.os.Bundle;
-import android.widget.EditText;
 import android.app.Activity;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.IgnoreExtraProperties;
-import com.google.firebase.database.PropertyName;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 
 public class RegistrationPage extends AppCompatActivity implements View.OnClickListener{
 
