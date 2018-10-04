@@ -56,22 +56,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         if (v.getId() == R.id.loginButton) {
             //this is what happens when the login button is clicked
             //new intent for entering the app
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            mDatabase.child("users").child("password").addListenerForSingleValueEvent(new ValueEventListener() {
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            mDatabase.child("users").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    String username = dataSnapshot.getKey();
-                    if (username == editUser.getText().toString()) {
-                        if (dataSnapshot.toString() == editPW.getText().toString()) {
+                    for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                        if (childSnapshot.toString() == editUser.getText().toString() && (childSnapshot.child("password").toString() == editPW.getText().toString())) {
                             Intent openApp = new Intent(Login.this, AppActivity.class);
                             startActivity(openApp);
-                        } else if (dataSnapshot.toString() != editPW.getText().toString()) {
-                            error.setError("wrong password");
+                            return;
                         }
-                    } else if (username != editUser.getText().toString()){
-                        error.setError("wrong username");
                     }
-
+                    error.setError("wrong username or password");
                 }
 
                 @Override
