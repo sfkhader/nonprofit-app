@@ -59,16 +59,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         if (v.getId() == R.id.loginButton) {
             //this is what happens when the login button is clicked
             //new intent for entering the app
-            Log.w("WOO", "Detected Login Button Press");
             mDatabase = FirebaseDatabase.getInstance().getReference();
             mDatabase.child("users").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Log.w("WOO", "My name is " + dataSnapshot.getKey());
-                    Log.w("WOO", "Going to go through each child.");
                     for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                        Log.w("WOO", "I am child " + childSnapshot.getKey()
-                        + " and my password is " + childSnapshot.child("password").getValue().toString());
                         if (childSnapshot.getKey().equals(editUser.getText().toString())
                                 && (childSnapshot.child("password").getValue().toString().equals(editPW.getText().toString()))) {
                             Intent openApp = new Intent(Login.this, AppActivity.class);
