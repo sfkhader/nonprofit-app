@@ -5,11 +5,14 @@ import android.renderscript.Sampler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.app.Activity;
+import android.widget.Toast;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +26,7 @@ import com.google.firebase.database.ChildEventListener;
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
     Button loginButton, bCancel;
-    EditText editPW, editUser, error;
+    EditText editPW, editUser;
     DatabaseReference mDatabase;
 
 
@@ -56,18 +59,26 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         if (v.getId() == R.id.loginButton) {
             //this is what happens when the login button is clicked
             //new intent for entering the app
+            Log.w("WOO", "Detected Login Button Press");
             mDatabase = FirebaseDatabase.getInstance().getReference();
             mDatabase.child("users").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Log.w("WOO", "My name is " + dataSnapshot.getKey());
+                    Log.w("WOO", "Going to go through each child.");
                     for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                        if (childSnapshot.toString() == editUser.getText().toString() && (childSnapshot.child("password").toString() == editPW.getText().toString())) {
+                        Log.w("WOO", "I am child " + childSnapshot.getKey()
+                        + " and my password is " + childSnapshot.child("password").getValue().toString());
+                        if (childSnapshot.getKey().equals(editUser.getText().toString())
+                                && (childSnapshot.child("password").getValue().toString().equals(editPW.getText().toString()))) {
                             Intent openApp = new Intent(Login.this, AppActivity.class);
                             startActivity(openApp);
                             return;
                         }
                     }
-                    error.setError("wrong username or password");
+                    Toast.makeText(Login.this,
+                            "Wrong username or password.",
+                            Toast.LENGTH_LONG).show();
                 }
 
                 @Override
