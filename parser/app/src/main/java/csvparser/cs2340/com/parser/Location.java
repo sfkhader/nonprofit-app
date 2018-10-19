@@ -12,6 +12,7 @@ public class Location {
     private String state;
     private String zip;
     private String type;
+    private String phone;
     private String website;
 
     //Default constructor w/ no args is needed for firebase
@@ -20,7 +21,7 @@ public class Location {
 
     Location(String name, String latitude, String longitude,
              String streetAddress, String city, String state, String zip,
-             String type, String website) {
+             String type, String phone, String website) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -29,6 +30,7 @@ public class Location {
         this.state = state;
         this.zip = zip;
         this.type = type;
+        this.phone = phone;
         this.website = website;
     }
 
@@ -56,6 +58,9 @@ public class Location {
     }
     public String getType() {
         return type;
+    }
+    public String getPhone() {
+        return phone;
     }
     public String getWebsite() {
         return website;

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Location l = new Location(tokens[1], tokens[2], tokens[3],
                         tokens[4], tokens[5], tokens[6], tokens[7], tokens[8],
-                        tokens[9]);
+                        tokens[9], tokens[10]);
                 database.child("locations").child(tokens[0]).setValue(l);
             }
             br.close();
