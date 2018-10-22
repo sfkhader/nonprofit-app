@@ -6,6 +6,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class Donation {
     private String name;
     private String description;
+    private int locationID;
 
     //Default constructor w/ no args is needed for firebase
     Donation() {
@@ -24,4 +25,6 @@ public class Donation {
     public String getDescription() {
         return description;
     }
+
+    public int getLocationID() { return locationID; }
 }
