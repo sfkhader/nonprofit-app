@@ -70,9 +70,9 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.information) {
-            Intent goback = new Intent(this, LocationInfoActivity.class);
-            goback.putExtra("EXTRA_LOCATION", locations.getSelectedItemPosition() + 1);
-            startActivity(goback);
+            Intent locationInfo = new Intent(this, LocationInfoActivity.class);
+            locationInfo.putExtra("EXTRA_LOCATION", locations.getSelectedItemPosition() + 1);
+            startActivity(locationInfo);
             return;
         }
     }

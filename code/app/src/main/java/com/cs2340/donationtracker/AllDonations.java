@@ -21,7 +21,7 @@ import java.util.List;
 
 
 public class AllDonations extends AppCompatActivity implements View.OnClickListener{
-    Button information;
+    Button donationInfo;
     Spinner donations;
 
     DatabaseReference mDatabase;
@@ -32,7 +32,7 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_donations);
 
-        information = (Button) findViewById(R.id.button);
+        donationInfo = (Button) findViewById(R.id.donationInfo);
         donations = (Spinner) findViewById(R.id.spinner);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -59,7 +59,7 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
                 android.R.layout.simple_spinner_item,
                 locationsArray));
 
-        information.setOnClickListener(this);
+        donationInfo.setOnClickListener(this);
     }
 
     @Override
@@ -69,9 +69,9 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button) {
-            Intent goback = new Intent(this, DonationInfoActivity.class);
-            startActivity(goback);
+        if (v.getId() == R.id.donationInfo) {
+            Intent items = new Intent(this, DonationInfoActivity.class);
+            startActivity(items);
             return;
         }
     }

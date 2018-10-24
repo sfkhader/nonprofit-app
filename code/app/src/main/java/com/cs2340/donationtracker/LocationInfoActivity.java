@@ -72,9 +72,9 @@ public class LocationInfoActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button) {
-            Intent goback = new Intent(this, AllDonations.class);
-            startActivity(goback);
+        if (v.getId() == R.id.donations) {
+            Intent donationPage = new Intent(this, AllDonations.class);
+            startActivity(donationPage);
             return;
         }
     }

@@ -24,7 +24,7 @@
         tools:layout_editor_absoluteY="91dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/donationInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="See info"
