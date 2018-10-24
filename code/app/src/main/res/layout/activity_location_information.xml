@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/locationName2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/donations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="see items"

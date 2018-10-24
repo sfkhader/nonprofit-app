@@ -22,8 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class LocationInfoActivity extends AppCompatActivity {
+public class LocationInfoActivity extends AppCompatActivity implements View.OnClickListener{
 
+    Button donations;
     TextView textName;
     TextView textType;
     TextView textLongitude;
@@ -38,12 +39,15 @@ public class LocationInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_information);
 
+        donations = (Button)findViewById(R.id.donations);
         textName = findViewById(R.id.locationName2);
         textType = findViewById(R.id.locationType);
         textLongitude = findViewById(R.id.longitude);
         textLatitude = findViewById(R.id.latitude);
         textPhone = findViewById(R.id.phone);
         textAddress = findViewById(R.id.address);
+
+        donations.setOnClickListener(this);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -58,10 +62,20 @@ public class LocationInfoActivity extends AppCompatActivity {
                 textLatitude.setText(dataSnapshot.child("latitude").getValue().toString());
                 textPhone.setText(dataSnapshot.child("phone").getValue().toString());
                 textAddress.setText(dataSnapshot.child("streetAddress").getValue().toString());
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.button) {
+            Intent goback = new Intent(this, AllDonations.class);
+            startActivity(goback);
+            return;
+        }
     }
 }

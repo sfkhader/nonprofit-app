@@ -34,6 +34,7 @@ public class DonationInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_information);
 
+
         textName = findViewById(R.id.name);
         textDescription = findViewById(R.id.description);
 
@@ -42,14 +43,14 @@ public class DonationInfoActivity extends AppCompatActivity {
         mDatabase.child("donations").child(Integer.toString(getIntent().
                 getIntExtra("EXTRA_DONATION", 0))).
                 addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        textName.setText(dataSnapshot.child("name").getValue().toString());
-                        textDescription.setText(dataSnapshot.child("description").getValue().toString());
-                    }
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                textName.setText(dataSnapshot.child("name").getValue().toString());
+                textDescription.setText(dataSnapshot.child("description").getValue().toString());
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {}
-                });
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
+        });
     }
 }
