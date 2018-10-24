@@ -22,8 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EditDonationInfo extends AppCompatActivity {
+public class EditDonationInfo extends AppCompatActivity implements View.OnClickListener{
 
+    Button save;
     TextView textName;
     TextView textDescription;
 
@@ -32,12 +33,14 @@ public class EditDonationInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location_information);
+        setContentView(R.layout.activity_edit_donation);
 
         textName = findViewById(R.id.name);
         textDescription = findViewById(R.id.description);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        save.setOnClickListener(this);
 
         mDatabase.child("donations").child(Integer.toString(getIntent().
                 getIntExtra("EXTRA_DONATION", 0))).
@@ -51,5 +54,14 @@ public class EditDonationInfo extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {}
                 });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.save) {
+            Intent saveDonation = new Intent(this, DonationInfoActivity.class);
+            startActivity(saveDonation);
+            return;
+        }
     }
 }
