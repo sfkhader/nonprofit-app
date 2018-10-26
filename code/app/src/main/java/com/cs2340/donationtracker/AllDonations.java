@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -34,6 +35,10 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
 
         donationInfo = (Button) findViewById(R.id.donationInfo);
         donations = (Spinner) findViewById(R.id.spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Arrays.asList("Donation 1", "Donation 2"));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        donations.setAdapter(adapter);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         donationsList = new ArrayList<>();
