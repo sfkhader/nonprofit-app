@@ -71,6 +71,7 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.donationInfo) {
             Intent items = new Intent(this, DonationInfoActivity.class);
+            items.putExtra("EXTRA_DONATION", donations.getSelectedItem().toString());
             startActivity(items);
             return;
         }

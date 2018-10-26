@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +28,12 @@ public class EditDonationInfo extends AppCompatActivity implements View.OnClickL
 
     Button save;
     TextView textName;
-    TextView textDescription;
+    TextView textShortDescription;
+    TextView textFullDescription;
+    TextView textValue;
+    TextView textCategory;
+    TextView textTimeStamp;
+    TextView textLocation;
 
     DatabaseReference mDatabase;
 
@@ -36,19 +43,31 @@ public class EditDonationInfo extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_edit_donation);
 
         textName = findViewById(R.id.name);
-        textDescription = findViewById(R.id.description);
+        textFullDescription = findViewById(R.id.description);
+        textShortDescription = findViewById(R.id.shortDescr);
+        textValue = findViewById(R.id.value);
+        textCategory = findViewById(R.id.category);
+        textTimeStamp = findViewById(R.id.stamp);
+        textLocation = findViewById(R.id.location);
+
+        save = findViewById(R.id.save);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         save.setOnClickListener(this);
 
-        mDatabase.child("donations").child(Integer.toString(getIntent().
-                getIntExtra("EXTRA_DONATION", 0))).
+        mDatabase.child("donations").child(getIntent().
+                getStringExtra("EXTRA_DONATION")).
                 addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         textName.setText(dataSnapshot.child("name").getValue().toString());
-                        textDescription.setText(dataSnapshot.child("type").getValue().toString());
+                        textShortDescription.setText(dataSnapshot.child("shortDescription").getValue().toString());
+                        textFullDescription.setText(dataSnapshot.child("fullDescription").getValue().toString());
+                        textValue.setText(dataSnapshot.child("value").getValue().toString());
+                        textCategory.setText(dataSnapshot.child("category").getValue().toString());
+                        textTimeStamp.setText(dataSnapshot.child("timeStamp").getValue().toString());
+                        textLocation.setText(dataSnapshot.child("location").getValue().toString());
                     }
 
                     @Override
@@ -59,9 +78,18 @@ public class EditDonationInfo extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.save) {
-            Intent saveDonation = new Intent(this, DonationInfoActivity.class);
-            startActivity(saveDonation);
-            return;
+            Donation newDonation = new Donation (textName.getText().toString(),
+                    textShortDescription.getText().toString(),
+                    textFullDescription.getText().toString(),
+                    textValue.getText().toString(),
+                    textCategory.getText().toString(),
+                    textTimeStamp.getText().toString(),
+                    textLocation.getText().toString());
+            mDatabase.child("donations").child(textName.getText().toString()).setValue(newDonation);
+            Intent goback = new Intent(this, DonationInfoActivity.class);
+            goback.putExtra("EXTRA_DONATION", getIntent().getStringExtra("EXTRA_DONATION"));
+            finish();
+            startActivity(goback);
         }
     }
 }

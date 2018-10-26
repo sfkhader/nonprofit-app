@@ -31,6 +31,7 @@ public class DonationInfoActivity extends AppCompatActivity implements View.OnCl
     TextView textValue;
     TextView textCategory;
     TextView textTimeStamp;
+    TextView textLocation;
 
     DatabaseReference mDatabase;
 
@@ -46,22 +47,24 @@ public class DonationInfoActivity extends AppCompatActivity implements View.OnCl
         textValue = findViewById(R.id.value);
         textCategory = findViewById(R.id.category);
         textTimeStamp = findViewById(R.id.timeStamp);
+        textLocation = findViewById(R.id.location);
+        edit = findViewById(R.id.edit);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         edit.setOnClickListener(this);
 
-        mDatabase.child("donations").child(Integer.toString(getIntent().
-                getIntExtra("EXTRA_DONATION", 0))).
+        mDatabase.child("donations").child(getIntent().getStringExtra("EXTRA_DONATION")).
                 addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 textName.setText(dataSnapshot.child("name").getValue().toString());
-                textShortDescription.setText(dataSnapshot.child("short description").getValue().toString());
-                textFullDescription.setText(dataSnapshot.child("full description").getValue().toString());
+                textShortDescription.setText(dataSnapshot.child("shortDescription").getValue().toString());
+                textFullDescription.setText(dataSnapshot.child("fullDescription").getValue().toString());
                 textValue.setText(dataSnapshot.child("value").getValue().toString());
                 textCategory.setText(dataSnapshot.child("category").getValue().toString());
-                textTimeStamp.setText(dataSnapshot.child("time stamp").getValue().toString());
+                textTimeStamp.setText(dataSnapshot.child("timeStamp").getValue().toString());
+                textLocation.setText(dataSnapshot.child("location").getValue().toString());
             }
 
             @Override
@@ -73,6 +76,7 @@ public class DonationInfoActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         if (v.getId() == R.id.edit) {
             Intent editDonation = new Intent(this, EditDonationInfo.class);
+            editDonation.putExtra("EXTRA_DONATION", getIntent().getStringExtra("EXTRA_DONATION"));
             startActivity(editDonation);
             return;
         }
