@@ -26,7 +26,11 @@ public class DonationInfoActivity extends AppCompatActivity implements View.OnCl
 
     Button edit;
     TextView textName;
-    TextView textDescription;
+    TextView textShortDescription;
+    TextView textFullDescription;
+    TextView textValue;
+    TextView textCategory;
+    TextView textTimeStamp;
 
     DatabaseReference mDatabase;
 
@@ -37,7 +41,11 @@ public class DonationInfoActivity extends AppCompatActivity implements View.OnCl
 
 
         textName = findViewById(R.id.name);
-        textDescription = findViewById(R.id.description);
+        textShortDescription = findViewById(R.id.shortDescription);
+        textFullDescription = findViewById(R.id.fullDescription);
+        textValue = findViewById(R.id.value);
+        textCategory = findViewById(R.id.category);
+        textTimeStamp = findViewById(R.id.timeStamp);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -49,7 +57,11 @@ public class DonationInfoActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 textName.setText(dataSnapshot.child("name").getValue().toString());
-                textDescription.setText(dataSnapshot.child("description").getValue().toString());
+                textShortDescription.setText(dataSnapshot.child("short description").getValue().toString());
+                textFullDescription.setText(dataSnapshot.child("full description").getValue().toString());
+                textValue.setText(dataSnapshot.child("value").getValue().toString());
+                textCategory.setText(dataSnapshot.child("category").getValue().toString());
+                textTimeStamp.setText(dataSnapshot.child("time stamp").getValue().toString());
             }
 
             @Override

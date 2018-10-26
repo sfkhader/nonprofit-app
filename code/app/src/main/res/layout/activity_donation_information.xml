@@ -7,6 +7,16 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Value"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,11 +27,11 @@
         tools:layout_editor_absoluteY="47dp" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/shortDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="Description"
+        android:text="Short Description"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="101dp" />
@@ -30,8 +40,32 @@
         android:id="@+id/edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:text="edit info"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="279dp" />
+        tools:layout_editor_absoluteY="322dp" />
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="237dp" />
+
+    <TextView
+        android:id="@+id/timeStamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time Stamp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="274dp" />
+
+    <TextView
+        android:id="@+id/fullDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Description"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="145dp" />
 </android.support.constraint.ConstraintLayout>
