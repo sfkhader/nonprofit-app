@@ -22,6 +22,7 @@ import java.util.List;
 
 public class AllDonations extends AppCompatActivity implements View.OnClickListener{
     Button donationInfo;
+    Button addDonationButton;
     Spinner donations;
 
     DatabaseReference mDatabase;
@@ -33,6 +34,7 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_all_donations);
 
         donationInfo = (Button) findViewById(R.id.donationInfo);
+        addDonationButton = (Button) findViewById(R.id.addDonation);
         donations = (Spinner) findViewById(R.id.spinner);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -60,6 +62,7 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
                 locationsArray));
 
         donationInfo.setOnClickListener(this);
+        addDonationButton.setOnClickListener(this);
     }
 
     @Override
@@ -74,6 +77,11 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
             items.putExtra("EXTRA_DONATION", donations.getSelectedItem().toString());
             startActivity(items);
             return;
+        }
+        if (v.getId() == R.id.addDonation) {
+            Intent addDonation = new Intent(this, EditDonationInfo.class);
+            addDonation.putExtra("EXTRA_DONATION", "none");
+            startActivity(addDonation);
         }
     }
 

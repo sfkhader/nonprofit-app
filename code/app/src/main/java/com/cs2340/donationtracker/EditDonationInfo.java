@@ -56,23 +56,28 @@ public class EditDonationInfo extends AppCompatActivity implements View.OnClickL
 
         save.setOnClickListener(this);
 
-        mDatabase.child("donations").child(getIntent().
-                getStringExtra("EXTRA_DONATION")).
-                addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        textName.setText(dataSnapshot.child("name").getValue().toString());
-                        textShortDescription.setText(dataSnapshot.child("shortDescription").getValue().toString());
-                        textFullDescription.setText(dataSnapshot.child("fullDescription").getValue().toString());
-                        textValue.setText(dataSnapshot.child("value").getValue().toString());
-                        textCategory.setText(dataSnapshot.child("category").getValue().toString());
-                        textTimeStamp.setText(dataSnapshot.child("timeStamp").getValue().toString());
-                        textLocation.setText(dataSnapshot.child("location").getValue().toString());
-                    }
+        if (getIntent().getStringExtra("EXTRA_DONATION").equals("none")) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {}
-                });
+        } else {
+            mDatabase.child("donations").child(getIntent().
+                    getStringExtra("EXTRA_DONATION")).
+                    addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            textName.setText(dataSnapshot.child("name").getValue().toString());
+                            textShortDescription.setText(dataSnapshot.child("shortDescription").getValue().toString());
+                            textFullDescription.setText(dataSnapshot.child("fullDescription").getValue().toString());
+                            textValue.setText(dataSnapshot.child("value").getValue().toString());
+                            textCategory.setText(dataSnapshot.child("category").getValue().toString());
+                            textTimeStamp.setText(dataSnapshot.child("timeStamp").getValue().toString());
+                            textLocation.setText(dataSnapshot.child("location").getValue().toString());
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+        }
     }
 
     @Override
@@ -87,7 +92,12 @@ public class EditDonationInfo extends AppCompatActivity implements View.OnClickL
                     textLocation.getText().toString());
             mDatabase.child("donations").child(textName.getText().toString()).setValue(newDonation);
             Intent goback = new Intent(this, DonationInfoActivity.class);
-            goback.putExtra("EXTRA_DONATION", getIntent().getStringExtra("EXTRA_DONATION"));
+            if (getIntent().getStringExtra("EXTRA_DONATION").equals("none")) {
+                goback.putExtra("EXTRA_DONATION", newDonation.getName());
+            } else {
+                goback.putExtra("EXTRA_DONATION", getIntent().getStringExtra("EXTRA_DONATION"));
+            }
+
             finish();
             startActivity(goback);
         }

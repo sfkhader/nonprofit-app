@@ -29,9 +29,20 @@
         android:id="@+id/donationInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="64dp"
         android:text="See info"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        tools:layout_editor_absoluteX="36dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <Button
+        android:id="@+id/addDonation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:text="Add Donation"
+        app:layout_constraintStart_toEndOf="@+id/donationInfo"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
 </android.support.constraint.ConstraintLayout>
