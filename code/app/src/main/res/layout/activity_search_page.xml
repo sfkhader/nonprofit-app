@@ -54,9 +54,19 @@
         android:layout_height="54dp"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="184dp"
-        android:text="Button"
+        android:text="Search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bBack"
+        android:layout_width="134dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="184dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/searchText"

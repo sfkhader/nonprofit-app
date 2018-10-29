@@ -22,7 +22,6 @@ import java.util.List;
 
 public class AllLocations extends AppCompatActivity implements View.OnClickListener{
     Button information;
-    Button bGoToSearch;
     Spinner locations;
 
     DatabaseReference mDatabase;
@@ -35,7 +34,8 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
 
         information = (Button) findViewById(R.id.information);
         locations = (Spinner) findViewById(R.id.spinner);
-        bGoToSearch = (Button) findViewById(R.id.bGoToSearch);
+
+
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         locationsList = new ArrayList<>();
@@ -62,7 +62,6 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
                 locationsArray));
 
         information.setOnClickListener(this);
-        bGoToSearch.setOnClickListener(this);
     }
 
     @Override
@@ -76,10 +75,6 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
             Intent locationInfo = new Intent(this, LocationInfoActivity.class);
             locationInfo.putExtra("EXTRA_LOCATION", locations.getSelectedItemPosition() + 1);
             startActivity(locationInfo);
-            return;
-        } else if (v.getId() == R.id.bGoToSearch) {
-            Intent bGoToSearch =  new Intent(this, SearchPage.class);
-            startActivity(bGoToSearch);
             return;
         }
     }

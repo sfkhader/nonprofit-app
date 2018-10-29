@@ -26,11 +26,11 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
     Spinner selectItem;
     EditText searchText;
     Button bSearch;
+    Button bBack;
 
     DatabaseReference mDatabase;
     List<String> locationsList;
     List<String> itemsList;
-    //List<String> filteredItemsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,9 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
         selectLocation = (Spinner) findViewById(R.id.selectLocation);
         searchText = (EditText) findViewById(R.id.searchText);
         bSearch = (Button) findViewById(R.id.bSearch);
+        bBack = (Button) findViewById(R.id.bBack);
+        bSearch.setOnClickListener(this);
+        bBack.setOnClickListener(this);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         //filteredItemsList = new ArrayList<>();
@@ -96,6 +99,11 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
             toResults.putExtras(extras);
             startActivity(toResults);
             return;
+        } else if (v.getId() == R.id.bBack) {
+            Intent goBack = new Intent(this, AppActivity.class);
+            startActivity(goBack);
+            return;
+
         }
     }
 

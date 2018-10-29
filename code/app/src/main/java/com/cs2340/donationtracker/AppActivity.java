@@ -12,6 +12,7 @@ import android.widget.EditText;
 public class AppActivity extends AppCompatActivity implements View.OnClickListener{
     Button bLogout;
     Button bLocations;
+    Button bGoToSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,8 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
 
         bLogout = (Button) findViewById(R.id.bLogout);
         bLocations = (Button) findViewById(R.id.locations);
+        bGoToSearch = (Button) findViewById(R.id.bGoToSearch);
+        bGoToSearch.setOnClickListener(this);
 
         bLogout.setOnClickListener(this);
         bLocations.setOnClickListener(this);
@@ -36,10 +39,13 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
             Intent goback = new Intent(this, LoginPage.class);
             startActivity(goback);
             return;
-        }
-        if (v.getId() == R.id.locations) {
+        }else if (v.getId() == R.id.locations) {
             Intent goback = new Intent(this, AllLocations.class);
             startActivity(goback);
+            return;
+        } else if (v.getId() == R.id.bGoToSearch) {
+            Intent bGoToSearch =  new Intent(this, SearchPage.class);
+            startActivity(bGoToSearch);
             return;
         }
     }
