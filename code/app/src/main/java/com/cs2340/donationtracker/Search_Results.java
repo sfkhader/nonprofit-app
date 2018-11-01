@@ -38,58 +38,48 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
         listView = (ListView) findViewById(R.id.list_view);
         arrayList = new ArrayList<>();
         goBack = (Button) findViewById(R.id.goBack);
+        Bundle extras = getIntent().getExtras();
+        String location = extras.getString("EXTRA_LOCATION");
+        String itemType = extras.getString("EXTRA_ITEM");
+        String text = extras.getString("EXTRA_TEXT");
+
+        searchDB(location, itemType, text);
 
 
-//        Bundle extras = getIntent().getExtras();
-//        String location = Integer.toString(extras.getInt("EXTRA_LOCATION"));
-//        String itemType = Integer.toString(extras.getInt("EXTRA_ITEM"));
-//        String text = extras.getString("EXTRA_TEXT");
+    }
 
+    /**
+     * @param loc
+     * @param itemT
+     * @param texto
+     */
+    public void searchDB(final String loc, final String itemT, final String texto) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mDatabase.child("donations").addListenerForSingleValueEvent(new ValueEventListener() {
-            Bundle extras = getIntent().getExtras();
-            String location = extras.getString("EXTRA_LOCATION");
-            String itemType = extras.getString("EXTRA_ITEM");
-            String text = extras.getString("EXTRA_TEXT");
+            String location = loc;
+            String itemType = itemT;
+            String text = texto;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //checks for NOT ALL LOCATIONS
                 if (!location.equals("All Locations")) {
-                    if (itemType.equals("Category")) {
-                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                            if (childSnapshot.child("location").getValue().toString().equals(location)) {
-                                if (childSnapshot.child("category").getValue().toString().contains(text)) {
-                                    arrayList.add(childSnapshot.child("name").getValue().toString());
-                                }
+                    for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                        if (childSnapshot.child("location").getValue().toString().equals(location) &&
+                        (childSnapshot.child("category").getValue().toString().equals(itemType))){
+                            if (childSnapshot.child("name").getValue().toString().contains(text)) {
+                                arrayList.add(childSnapshot.child("name").getValue().toString());
                             }
-                        }
-
-                    } else if (itemType.equals("Name")) {
-                        //String if2 = "in name if";
-                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                            if (childSnapshot.child("location").getValue().toString().equals(location)) {
-                                if (childSnapshot.child("name").getValue().toString().contains(text)) {
-                                    arrayList.add(childSnapshot.child("name").getValue().toString());
-                                }
-                            }
-
                         }
                     }
                 } else if (location.equals("All Locations")) {
-                    if (itemType.equals("Category")) {
-                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                            if (childSnapshot.child("category").getValue().toString().contains(text)) {
-                                arrayList.add(childSnapshot.child("name").getValue().toString());
+                    for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                        if (childSnapshot.child("name").getValue().toString().contains(text) &&
+                                (childSnapshot.child("category").getValue().toString()
+                                        .equals(itemType))) {
 
-                            }
-                        }
+                            arrayList.add(childSnapshot.child("name").getValue().toString());
 
-                    } else if (itemType.equals("Name")) {
-                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                            if (childSnapshot.child("name").getValue().toString().contains(text)) {
-                                arrayList.add(childSnapshot.child("name").getValue().toString());
-
-                            }
                         }
                     }
 
@@ -105,6 +95,9 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    /**
+     * method just arranges the results properly
+     */
     public void finit() {
         if(arrayList.size() == 0) {
             String noResults = "No Results Found";

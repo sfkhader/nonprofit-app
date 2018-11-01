@@ -48,8 +48,20 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
         mDatabase = FirebaseDatabase.getInstance().getReference();
         //filteredItemsList = new ArrayList<>();
         itemsList = new ArrayList<>();
-        addItemToList("Name");
-        addItemToList("Category");
+        mDatabase.child("donations").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                    if(!itemsList.contains(childSnapshot.child("category").getValue().toString())){
+                        addItemToList(childSnapshot.child("category").getValue().toString());
+                    }
+                }
+                finishInit();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
+        });
         locationsList = new ArrayList<>();
         mDatabase.child("locations").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
