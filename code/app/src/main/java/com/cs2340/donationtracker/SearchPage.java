@@ -79,6 +79,10 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
     }
 
     //Function called once all locations have actually loaded from firebase
+
+    /**
+     * arranges the spinners on the search page
+     */
     public void finishInit () {
         String[] locationsArray = locationsList.toArray(new String[locationsList.size()]);
         String[] itemsArray = itemsList.toArray(new String[itemsList.size()]);
@@ -98,7 +102,7 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
     }
-
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.bSearch) {
             Intent toResults = new Intent(this, Search_Results.class);
@@ -119,9 +123,18 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
         }
     }
 
+    /**
+     * adds data to loclist
+     * @param data all locs
+     */
     public void addLocToList(String data) {
         locationsList.add(data);
     }
+
+    /**
+     *  adds an item
+     * @param data all items
+     */
     public void addItemToList(String data) {
         itemsList.add(data);
     }

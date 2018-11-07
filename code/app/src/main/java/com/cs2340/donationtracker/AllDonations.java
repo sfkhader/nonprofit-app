@@ -53,7 +53,9 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    //Function called once all locations have actually loaded from firebase
+    /**
+     * arranges the donations in the spinner
+     */
     public void finishInit () {
         String[] locationsArray = donationsList.toArray(new String[donationsList.size()]);
 
@@ -85,6 +87,10 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * adds a donation to the list
+     * @param data
+     */
     public void addToList(String data) {
         donationsList.add(data);
     }

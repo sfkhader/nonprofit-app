@@ -49,9 +49,9 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
     }
 
     /**
-     * @param loc
-     * @param itemT
-     * @param texto
+     * @param loc selected loc
+     * @param itemT selected item
+     * @param texto entered text
      */
     public void searchDB(final String loc, final String itemT, final String texto) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -94,7 +94,6 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
         });
 
     }
-
     /**
      * method just arranges the results properly
      */
@@ -119,6 +118,5 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
             startActivity(searchPage);
             return;
         }
-
     }
 }

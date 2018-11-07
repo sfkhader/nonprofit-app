@@ -53,7 +53,9 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    //Function called once all locations have actually loaded from firebase
+    /**
+     * arranges the spinners to have locations
+     */
     public void finishInit () {
         String[] locationsArray = locationsList.toArray(new String[locationsList.size()]);
 
@@ -79,6 +81,10 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     *
+     * @param data takes in the data :)
+     */
     public void addToList(String data) {
         locationsList.add(data);
     }

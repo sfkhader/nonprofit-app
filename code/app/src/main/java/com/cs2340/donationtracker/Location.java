@@ -16,9 +16,26 @@ public class Location {
     private String website;
 
     //Default constructor w/ no args is needed for firebase
+
+    /**
+     * Location Constuctor
+     */
     Location() {
     }
 
+    /**
+     *  Location constructor
+     * @param name name
+     * @param latitude latitude
+     * @param longitude longitude
+     * @param streetAddress streetAddress
+     * @param city city
+     * @param state state
+     * @param zip zip
+     * @param type type
+     * @param phone phone
+     * @param website website
+     */
     Location(String name, String latitude, String longitude,
              String streetAddress, String city, String state, String zip,
              String type, String phone, String website) {
@@ -35,33 +52,83 @@ public class Location {
     }
 
     //Public getters are needed for firebase to accept our object
+
+    /**
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }
+
+    /**
+     *
+     * @return latitude
+     */
     public String getLatitude() {
         return latitude;
     }
+
+    /**
+     *
+     * @return longitude
+     */
     public String getLongitude() {
         return longitude;
     }
+
+    /**
+     *
+     * @return streetAddress
+     */
     public String getStreetAddress() {
         return streetAddress;
     }
+
+    /**
+     *
+     * @return city
+     */
     public String getCity() {
         return city;
     }
+
+    /**
+     *
+     * @return state
+     */
     public String getState() {
         return state;
     }
+
+    /**
+     *
+     * @return zip
+     */
     public String getZip() {
         return zip;
     }
+
+    /**
+     *
+     * @return type
+     */
     public String getType() {
         return type;
     }
+
+    /**
+     *
+     * @return phone
+     */
     public String getPhone() {
         return phone;
     }
+
+    /**
+     *
+     * @return website
+     */
     public String getWebsite() {
         return website;
     }

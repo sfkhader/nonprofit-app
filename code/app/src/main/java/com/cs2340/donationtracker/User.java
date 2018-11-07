@@ -9,9 +9,19 @@ public class User {
     private String userType;
 
     //Default constructor w/ no args is needed for firebase
+
+    /**
+     * Constructor for User
+     */
     User() {
     }
 
+    /**
+     * Constructor for User
+     * @param realName entered name
+     * @param password entered pw
+     * @param userType entered type
+     */
     User(String realName, String password, String userType) {
         this.realName = realName;
         this.password = password;
@@ -19,12 +29,27 @@ public class User {
     }
 
     //Public getters are needed for firebase to accept our object
+
+    /**
+     *
+     * @return name
+     */
     public String getRealName() {
         return realName;
     }
+
+    /**
+     *
+     * @return pw
+     */
     public String getPassword() {
         return password;
     }
+
+    /**
+     *
+     * @return type
+     */
     public String getUserType() {
         return userType;
     }
