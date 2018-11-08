@@ -5,8 +5,8 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Location {
     private String name;
-    private String latitude;
-    private String longitude;
+    private double latitude;
+    private double longitude;
     private String streetAddress;
     private String city;
     private String state;
@@ -21,6 +21,12 @@ public class Location {
      * Location Constuctor
      */
     Location() {
+
+    }
+
+    Location(double latitude, double longitude) {
+        this("", latitude, longitude, "", "", "", "", "", "", "");
+
     }
 
     /**
@@ -35,8 +41,9 @@ public class Location {
      * @param type type
      * @param phone phone
      * @param website website
+     *
      */
-    Location(String name, String latitude, String longitude,
+    Location(String name, double latitude, double longitude,
              String streetAddress, String city, String state, String zip,
              String type, String phone, String website) {
         this.name = name;
@@ -65,7 +72,7 @@ public class Location {
      *
      * @return latitude
      */
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
@@ -73,7 +80,7 @@ public class Location {
      *
      * @return longitude
      */
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
