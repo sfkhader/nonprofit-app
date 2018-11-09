@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -37,11 +36,11 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
 
-        selectItem = (Spinner) findViewById(R.id.selectItem);
-        selectLocation = (Spinner) findViewById(R.id.selectLocation);
-        searchText = (EditText) findViewById(R.id.searchText);
-        bSearch = (Button) findViewById(R.id.bSearch);
-        bBack = (Button) findViewById(R.id.bBack);
+        selectItem = findViewById(R.id.selectItem);
+        selectLocation = findViewById(R.id.selectLocation);
+        searchText = findViewById(R.id.searchText);
+        bSearch = findViewById(R.id.bSearch);
+        bBack = findViewById(R.id.bBack);
         bSearch.setOnClickListener(this);
         bBack.setOnClickListener(this);
 
@@ -114,11 +113,9 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
             extras.putString("EXTRA_TEXT", searchText.getText().toString());
             toResults.putExtras(extras);
             startActivity(toResults);
-            return;
         } else if (v.getId() == R.id.bBack) {
             Intent goBack = new Intent(this, AppActivity.class);
             startActivity(goBack);
-            return;
 
         }
     }

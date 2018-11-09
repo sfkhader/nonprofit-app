@@ -4,25 +4,15 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class EditDonationInfo extends AppCompatActivity implements View.OnClickListener{
 
@@ -56,7 +46,7 @@ public class EditDonationInfo extends AppCompatActivity implements View.OnClickL
 
         save.setOnClickListener(this);
 
-        if (getIntent().getStringExtra("EXTRA_DONATION").equals("none")) {
+        if ("none".equals(getIntent().getStringExtra("EXTRA_DONATION"))) {
 
         } else {
             mDatabase.child("donations").child(getIntent().
@@ -92,7 +82,7 @@ public class EditDonationInfo extends AppCompatActivity implements View.OnClickL
                     textLocation.getText().toString());
             mDatabase.child("donations").child(textName.getText().toString()).setValue(newDonation);
             Intent goback = new Intent(this, DonationInfoActivity.class);
-            if (getIntent().getStringExtra("EXTRA_DONATION").equals("none")) {
+            if ("none".equals(getIntent().getStringExtra("EXTRA_DONATION"))) {
                 goback.putExtra("EXTRA_DONATION", newDonation.getName());
             } else {
                 goback.putExtra("EXTRA_DONATION", getIntent().getStringExtra("EXTRA_DONATION"));

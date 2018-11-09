@@ -2,13 +2,11 @@ package com.cs2340.donationtracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,7 +16,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Search_Results extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,9 +32,9 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search__results);
 
-        listView = (ListView) findViewById(R.id.list_view);
+        listView = findViewById(R.id.list_view);
         searchArray = new ArrayList<>();
-        goBack = (Button) findViewById(R.id.goBack);
+        goBack = findViewById(R.id.goBack);
         Bundle extras = getIntent().getExtras();
         String location = extras.getString("EXTRA_LOCATION");
         String itemType = extras.getString("EXTRA_ITEM");
@@ -63,7 +60,7 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //checks for NOT ALL LOCATIONS
-                if (!location.equals("All Locations")) {
+                if (!"All Locations".equals(location)) {
                     for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                         if (childSnapshot.child("location").getValue().toString().equals(location) &&
                         (childSnapshot.child("category").getValue().toString().equals(itemType))){
@@ -72,7 +69,7 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
                             }
                         }
                     }
-                } else if (location.equals("All Locations")) {
+                } else if ("All Locations".equals(location)) {
                     for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                         if (childSnapshot.child("name").getValue().toString().contains(text) &&
                                 (childSnapshot.child("category").getValue().toString()
@@ -98,7 +95,7 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
      * method just arranges the results properly
      */
     public void finit() {
-        if(searchArray.size() == 0) {
+        if(searchArray.isEmpty()) {
             String noResults = "No Results Found";
             searchArray.add(noResults);
         }
@@ -116,7 +113,6 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
             Intent searchPage = new Intent(this, SearchPage.class);
             searchArray.clear();
             startActivity(searchPage);
-            return;
         }
     }
 }

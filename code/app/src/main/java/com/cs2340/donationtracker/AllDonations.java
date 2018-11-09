@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -19,7 +18,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Class created to display all the donations
+ */
 public class AllDonations extends AppCompatActivity implements View.OnClickListener{
     Button donationInfo;
     Button addDonationButton;
@@ -33,9 +34,9 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_donations);
 
-        donationInfo = (Button) findViewById(R.id.donationInfo);
-        addDonationButton = (Button) findViewById(R.id.addDonation);
-        donations = (Spinner) findViewById(R.id.spinner);
+        donationInfo = findViewById(R.id.donationInfo);
+        addDonationButton = findViewById(R.id.addDonation);
+        donations = findViewById(R.id.spinner);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         donationsList = new ArrayList<>();
@@ -89,7 +90,7 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
 
     /**
      * adds a donation to the list
-     * @param data
+     * @param data the donation to add to the list
      */
     public void addToList(String data) {
         donationsList.add(data);

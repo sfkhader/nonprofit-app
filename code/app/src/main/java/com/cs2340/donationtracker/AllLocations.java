@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -32,8 +31,8 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_locations);
 
-        information = (Button) findViewById(R.id.information);
-        locations = (Spinner) findViewById(R.id.spinner);
+        information = findViewById(R.id.information);
+        locations = findViewById(R.id.spinner);
 
 
 
@@ -77,7 +76,6 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
             Intent locationInfo = new Intent(this, LocationInfoActivity.class);
             locationInfo.putExtra("EXTRA_LOCATION", locations.getSelectedItemPosition() + 1);
             startActivity(locationInfo);
-            return;
         }
     }
 

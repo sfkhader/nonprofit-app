@@ -8,15 +8,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.support.v7.app.AppCompatActivity;
-import android.app.Activity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegistrationPage extends AppCompatActivity implements View.OnClickListener{
 
-    Button registerButton, cancelButton;
-    EditText editPW, editUser, editName;
+    Button registerButton;
+    Button cancelButton;
+    EditText editPW;
+    EditText editUser;
+    EditText editName;
     Spinner userType;
     DatabaseReference mDatabase;
     //public ArrayList<User> usersList;
@@ -30,14 +32,14 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
 
         //this will look through the activity xml and find the View that matches editUser
         //and editPW, and will set it to the variables on the left.
-        editUser = (EditText) findViewById(R.id.usernameField);
-        editPW = (EditText) findViewById(R.id.passwordField);
-        editName = (EditText) findViewById(R.id.nameField);
+        editUser = findViewById(R.id.usernameField);
+        editPW = findViewById(R.id.passwordField);
+        editName = findViewById(R.id.nameField);
 
-        registerButton = (Button) findViewById(R.id.registerButton);
-        cancelButton = (Button) findViewById(R.id.cancelButton);
+        registerButton = findViewById(R.id.registerButton);
+        cancelButton = findViewById(R.id.cancelButton);
 
-        userType = (Spinner) findViewById(R.id.spinner);
+        userType = findViewById(R.id.spinner);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         String[] userTypes = {"User", "Location Employee", "Admin"};
@@ -72,6 +74,5 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
             startActivity(goBack);
 
         }
-        return;
     }
 }

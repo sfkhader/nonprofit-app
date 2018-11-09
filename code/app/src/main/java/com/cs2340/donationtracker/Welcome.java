@@ -18,8 +18,10 @@ import com.google.firebase.database.DatabaseError;
 
 public class Welcome extends AppCompatActivity implements View.OnClickListener{
 
-    Button loginButton, bCancel;
-    EditText editPW, editUser;
+    Button loginButton;
+    Button bCancel;
+    EditText editPW;
+    EditText editUser;
     DatabaseReference mDatabase;
 
 
@@ -31,10 +33,10 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener{
 
         //this will look through the activity xml and find the View that matches editUser
         //and editPW, and will set it to the variables on the left.
-        editUser = (EditText) findViewById(R.id.editUser);
-        editPW = (EditText) findViewById(R.id.editPW);
-        loginButton = (Button) findViewById(R.id.loginButton);
-        bCancel = (Button) findViewById(R.id.bCancel);
+        editUser = findViewById(R.id.editUser);
+        editPW = findViewById(R.id.editPW);
+        loginButton = findViewById(R.id.loginButton);
+        bCancel = findViewById(R.id.bCancel);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         //now we set an on click listener, which watches for when the user hits the login button

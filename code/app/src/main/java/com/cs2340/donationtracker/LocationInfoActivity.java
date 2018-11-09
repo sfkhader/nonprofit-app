@@ -4,22 +4,15 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class LocationInfoActivity extends AppCompatActivity implements View.OnClickListener{
@@ -39,7 +32,7 @@ public class LocationInfoActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_information);
 
-        donations = (Button)findViewById(R.id.donations);
+        donations = findViewById(R.id.donations);
         textName = findViewById(R.id.locationName2);
         textType = findViewById(R.id.locationType);
         textLongitude = findViewById(R.id.longitude);
@@ -75,7 +68,6 @@ public class LocationInfoActivity extends AppCompatActivity implements View.OnCl
         if (v.getId() == R.id.donations) {
             Intent donationPage = new Intent(this, AllDonations.class);
             startActivity(donationPage);
-            return;
         }
     }
 }

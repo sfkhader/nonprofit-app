@@ -1,12 +1,18 @@
 package com.cs2340.donationtracker;
 
-import android.provider.ContactsContract;
 
 import java.util.List;
 
-
+/**
+ * Class created to
+ */
 public class DataServiceFacade {
-    private static DataServiceFacade INSTANCE = new DataServiceFacade();
+    private final static DataServiceFacade INSTANCE = new DataServiceFacade();
+
+    /**
+     * getter for instance of DataServiceFacade
+     * @return the variable INSTANCE
+     */
     public static DataServiceFacade getInstance() { return INSTANCE; }
 
     private DataManager theData = new DataManager();
@@ -43,6 +49,10 @@ public class DataServiceFacade {
         theLastAddedElement = loc;
     }
 
+    /**
+     * Add the data element to the DataManager
+     * @param loc the location to add
+     */
     public void addDataElement(Location loc) {
         theData.addReport(loc);
         theLastAddedElement = loc;
