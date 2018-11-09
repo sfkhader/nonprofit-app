@@ -64,10 +64,14 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value= "AIzaSyCcMn2sveUGviISjfU6bB5IYNdLukcHIIc" />
+            android:value= "AIzaSyA3uLpITJlvyWW7k1S0p8eVIgzF4LP2pZg" />
         <activity
             android:name=".MapsActivity"
             android:label="Map Activity"></activity>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
     </application>
 
