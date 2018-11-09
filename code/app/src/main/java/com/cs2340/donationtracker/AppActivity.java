@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
-
+/**
+ * Class created to represent activity on the first page when logged into app
+ */
 public class AppActivity extends AppCompatActivity implements View.OnClickListener{
-    Button bLogout;
-    Button bLocations;
-    Button bGoToSearch;
-    Button bMap;
+    private Button bLogout;
+    private Button bLocations;
+    private Button bGoToSearch;
+    private Button bMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +38,23 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.bLogout) {
-            Intent bLogout = new Intent(this, LoginPage.class);
-            startActivity(bLogout);
-        }else if (v.getId() == R.id.locations) {
-            Intent bLocations = new Intent(this, AllLocations.class);
-            startActivity(bLocations);
-        } else if (v.getId() == R.id.bGoToSearch) {
-            Intent bGoToSearch =  new Intent(this, SearchPage.class);
-            startActivity(bGoToSearch);
-        } else if (v.getId() == R.id.map) {
-            Intent bMap =  new Intent(this, MapsActivity.class);
-            startActivity(bMap);
+        switch (v.getId()) {
+            case R.id.bLogout:
+                Intent bLogout = new Intent(this, LoginPage.class);
+                startActivity(bLogout);
+                break;
+            case R.id.locations:
+                Intent bLocations = new Intent(this, AllLocations.class);
+                startActivity(bLocations);
+                break;
+            case R.id.bGoToSearch:
+                Intent bGoToSearch = new Intent(this, SearchPage.class);
+                startActivity(bGoToSearch);
+                break;
+            case R.id.map:
+                Intent bMap = new Intent(this, MapsActivity.class);
+                startActivity(bMap);
+                break;
         }
     }
 }

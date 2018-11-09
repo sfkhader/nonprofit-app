@@ -17,17 +17,18 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Class created to display all the donations
  */
 public class AllDonations extends AppCompatActivity implements View.OnClickListener{
-    Button donationInfo;
-    Button addDonationButton;
-    Spinner donations;
+    private Button donationInfo;
+    private Button addDonationButton;
+    private Spinner donations;
 
-    DatabaseReference mDatabase;
-    List<String> donationsList;
+    private DatabaseReference mDatabase;
+    private List<String> donationsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                    addToList(childSnapshot.child("name").getValue().toString());
+                    addToList(Objects.requireNonNull(childSnapshot.child("name").getValue()).toString());
                 }
                 finishInit();
             }
@@ -57,10 +58,10 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
     /**
      * arranges the donations in the spinner
      */
-    public void finishInit () {
+    private void finishInit() {
         String[] donationsArray = donationsList.toArray(new String[donationsList.size()]);
 
-        donations.setAdapter(new ArrayAdapter<String>(this,
+        donations.setAdapter(new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
                 donationsArray));
 
@@ -92,7 +93,7 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
      * adds a donation to the list
      * @param data the donation to add to the list
      */
-    public void addToList(String data) {
+    private void addToList(String data) {
         donationsList.add(data);
     }
 }

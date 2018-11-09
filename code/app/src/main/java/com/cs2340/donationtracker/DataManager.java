@@ -5,7 +5,7 @@ import java.util.List;
 
 
 class DataManager {
-    List<Location> locationList;
+    private List<Location> locationList;
 
     DataManager() {
         locationList = new ArrayList<>();

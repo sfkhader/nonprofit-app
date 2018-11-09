@@ -17,14 +17,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-
+/**
+ * Class created to display all the locations
+ */
 public class AllLocations extends AppCompatActivity implements View.OnClickListener{
-    Button information;
-    Spinner locations;
+    private Button information;
+    private Spinner locations;
 
-    DatabaseReference mDatabase;
-    List<String> locationsList;
+    private DatabaseReference mDatabase;
+    private List<String> locationsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,7 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                    addToList(childSnapshot.child("name").getValue().toString());
+                    addToList(Objects.requireNonNull(childSnapshot.child("name").getValue()).toString());
                 }
                 finishInit();
             }
@@ -55,10 +58,10 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
     /**
      * arranges the spinners to have locations
      */
-    public void finishInit () {
+    private void finishInit() {
         String[] locationsArray = locationsList.toArray(new String[locationsList.size()]);
 
-        locations.setAdapter(new ArrayAdapter<String>(this,
+        locations.setAdapter(new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
                 locationsArray));
 
@@ -83,7 +86,7 @@ public class AllLocations extends AppCompatActivity implements View.OnClickListe
      *
      * @param data takes in the data :)
      */
-    public void addToList(String data) {
+    private void addToList(String data) {
         locationsList.add(data);
     }
 }

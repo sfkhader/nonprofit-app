@@ -2,7 +2,11 @@ package com.cs2340.donationtracker;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+
 @IgnoreExtraProperties
+/**
+ * Class created to represent all the information regarding a user
+ */
 public class User {
     private String realName;
     private String password;

@@ -15,14 +15,18 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DatabaseError;
 
+import java.util.Objects;
 
+/**
+ * Class created to represent activity on welcome page of app
+ */
 public class Welcome extends AppCompatActivity implements View.OnClickListener{
 
-    Button loginButton;
-    Button bCancel;
-    EditText editPW;
-    EditText editUser;
-    DatabaseReference mDatabase;
+    private Button loginButton;
+    private Button bCancel;
+    private EditText editPW;
+    private EditText editUser;
+    private DatabaseReference mDatabase;
 
 
 
@@ -59,8 +63,8 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener{
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                        if (childSnapshot.getKey().equals(editUser.getText().toString())
-                                && (childSnapshot.child("password").getValue().toString().equals(editPW.getText().toString()))) {
+                        if (Objects.requireNonNull(childSnapshot.getKey()).equals(editUser.getText().toString())
+                                && (Objects.requireNonNull(childSnapshot.child("password").getValue()).toString().equals(editPW.getText().toString()))) {
                             Intent openApp = new Intent(Welcome.this, AppActivity.class);
                             startActivity(openApp);
                             return;

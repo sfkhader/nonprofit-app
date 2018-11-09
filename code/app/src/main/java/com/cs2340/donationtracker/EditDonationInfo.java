@@ -14,18 +14,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
+/**
+ * Class created to represent how to edit information of donation item
+ */
 public class EditDonationInfo extends AppCompatActivity implements View.OnClickListener{
 
-    Button save;
-    TextView textName;
-    TextView textShortDescription;
-    TextView textFullDescription;
-    TextView textValue;
-    TextView textCategory;
-    TextView textTimeStamp;
-    TextView textLocation;
+    private Button save;
+    private TextView textName;
+    private TextView textShortDescription;
+    private TextView textFullDescription;
+    private TextView textValue;
+    private TextView textCategory;
+    private TextView textTimeStamp;
+    private TextView textLocation;
 
-    DatabaseReference mDatabase;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,21 +51,19 @@ public class EditDonationInfo extends AppCompatActivity implements View.OnClickL
 
         save.setOnClickListener(this);
 
-        if ("none".equals(getIntent().getStringExtra("EXTRA_DONATION"))) {
-
-        } else {
+        if (!"none".equals(getIntent().getStringExtra("EXTRA_DONATION"))) {
             mDatabase.child("donations").child(getIntent().
                     getStringExtra("EXTRA_DONATION")).
                     addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            textName.setText(dataSnapshot.child("name").getValue().toString());
-                            textShortDescription.setText(dataSnapshot.child("shortDescription").getValue().toString());
-                            textFullDescription.setText(dataSnapshot.child("fullDescription").getValue().toString());
-                            textValue.setText(dataSnapshot.child("value").getValue().toString());
-                            textCategory.setText(dataSnapshot.child("category").getValue().toString());
-                            textTimeStamp.setText(dataSnapshot.child("timeStamp").getValue().toString());
-                            textLocation.setText(dataSnapshot.child("location").getValue().toString());
+                            textName.setText(Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString());
+                            textShortDescription.setText(Objects.requireNonNull(dataSnapshot.child("shortDescription").getValue()).toString());
+                            textFullDescription.setText(Objects.requireNonNull(dataSnapshot.child("fullDescription").getValue()).toString());
+                            textValue.setText(Objects.requireNonNull(dataSnapshot.child("value").getValue()).toString());
+                            textCategory.setText(Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString());
+                            textTimeStamp.setText(Objects.requireNonNull(dataSnapshot.child("timeStamp").getValue()).toString());
+                            textLocation.setText(Objects.requireNonNull(dataSnapshot.child("location").getValue()).toString());
                         }
 
                         @Override

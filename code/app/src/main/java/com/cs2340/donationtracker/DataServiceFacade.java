@@ -7,7 +7,7 @@ import java.util.List;
  * Class created to
  */
 public class DataServiceFacade {
-    private final static DataServiceFacade INSTANCE = new DataServiceFacade();
+    private static final DataServiceFacade INSTANCE = new DataServiceFacade();
 
     /**
      * getter for instance of DataServiceFacade

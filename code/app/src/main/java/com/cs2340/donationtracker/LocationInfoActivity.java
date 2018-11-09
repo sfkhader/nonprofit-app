@@ -14,18 +14,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
 
+/**
+ * Class created to display the information of each location
+ */
 public class LocationInfoActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button donations;
-    TextView textName;
-    TextView textType;
-    TextView textLongitude;
-    TextView textLatitude;
-    TextView textPhone;
-    TextView textAddress;
+    private Button donations;
+    private TextView textName;
+    private TextView textType;
+    private TextView textLongitude;
+    private TextView textLatitude;
+    private TextView textPhone;
+    private TextView textAddress;
 
-    DatabaseReference mDatabase;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +53,12 @@ public class LocationInfoActivity extends AppCompatActivity implements View.OnCl
                 addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                textName.setText(dataSnapshot.child("name").getValue().toString());
-                textType.setText(dataSnapshot.child("type").getValue().toString());
-                textLongitude.setText(dataSnapshot.child("longitude").getValue().toString());
-                textLatitude.setText(dataSnapshot.child("latitude").getValue().toString());
-                textPhone.setText(dataSnapshot.child("phone").getValue().toString());
-                textAddress.setText(dataSnapshot.child("streetAddress").getValue().toString());
+                textName.setText(Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString());
+                textType.setText(Objects.requireNonNull(dataSnapshot.child("type").getValue()).toString());
+                textLongitude.setText(Objects.requireNonNull(dataSnapshot.child("longitude").getValue()).toString());
+                textLatitude.setText(Objects.requireNonNull(dataSnapshot.child("latitude").getValue()).toString());
+                textPhone.setText(Objects.requireNonNull(dataSnapshot.child("phone").getValue()).toString());
+                textAddress.setText(Objects.requireNonNull(dataSnapshot.child("streetAddress").getValue()).toString());
 
             }
 

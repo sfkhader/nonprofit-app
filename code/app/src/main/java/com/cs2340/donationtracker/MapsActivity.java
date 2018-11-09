@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 
 /**
  * Controller for the Map Display.   Mostly generated from the MapActivity wizard
@@ -29,7 +31,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     /** holds the map object returned from Google */
     private GoogleMap mMap;
-    DatabaseReference mDatabase;
+    private DatabaseReference mDatabase;
 
 
     @Override
@@ -41,7 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        Objects.requireNonNull(mapFragment).getMapAsync(this);
     }
 
 
@@ -124,10 +126,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                     //iStr = Integer.toString(i);
-                    lat =  Double.valueOf(childSnapshot.child("latitude").getValue().toString());
-                    lng = Double.valueOf(childSnapshot.child("longitude").getValue().toString());
-                    locName = childSnapshot.child("name").getValue().toString();
-                    number = childSnapshot.child("phone").getValue().toString();
+                    lat =  Double.valueOf(Objects.requireNonNull(childSnapshot.child("latitude").getValue()).toString());
+                    lng = Double.valueOf(Objects.requireNonNull(childSnapshot.child("longitude").getValue()).toString());
+                    locName = Objects.requireNonNull(childSnapshot.child("name").getValue()).toString();
+                    number = Objects.requireNonNull(childSnapshot.child("phone").getValue()).toString();
                     locO = new LatLng(lat, lng);
                     mMap.addMarker(new MarkerOptions()
                             .position(locO)
@@ -143,7 +145,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
     }
 

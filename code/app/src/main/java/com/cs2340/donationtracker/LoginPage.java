@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Class used to represent activity for login page of app
+ */
 public class LoginPage extends AppCompatActivity implements View.OnClickListener{
-    Button login;
-    Button register;
-
+    private Button login;
+    private Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

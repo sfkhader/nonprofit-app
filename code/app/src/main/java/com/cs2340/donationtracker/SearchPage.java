@@ -18,18 +18,22 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+/**
+ * Class created to represent the activity of searching for items
+ */
 public class SearchPage extends AppCompatActivity implements View.OnClickListener {
 
-    Spinner selectLocation;
-    Spinner selectItem;
-    EditText searchText;
-    Button bSearch;
-    Button bBack;
+    private Spinner selectLocation;
+    private Spinner selectItem;
+    private EditText searchText;
+    private Button bSearch;
+    private Button bBack;
 
-    DatabaseReference mDatabase;
-    List<String> locationsList;
-    List<String> itemsList;
+    private DatabaseReference mDatabase;
+    private List<String> locationsList;
+    private List<String> itemsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +55,8 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                    if(!itemsList.contains(childSnapshot.child("category").getValue().toString())){
-                        addItemToList(childSnapshot.child("category").getValue().toString());
+                    if(!itemsList.contains(Objects.requireNonNull(childSnapshot.child("category").getValue()).toString())){
+                        addItemToList(Objects.requireNonNull(childSnapshot.child("category").getValue()).toString());
                     }
                 }
                 finishInit();
@@ -67,7 +71,7 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 addLocToList("All Locations");
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                    addLocToList(childSnapshot.child("name").getValue().toString());
+                    addLocToList(Objects.requireNonNull(childSnapshot.child("name").getValue()).toString());
                 }
                 finishInit();
             }
@@ -82,14 +86,14 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
     /**
      * arranges the spinners on the search page
      */
-    public void finishInit () {
+    private void finishInit() {
         String[] locationsArray = locationsList.toArray(new String[locationsList.size()]);
         String[] itemsArray = itemsList.toArray(new String[itemsList.size()]);
 
-        ArrayAdapter<String> locAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> locAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
                 locationsArray);
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
                 itemsArray);
 
@@ -124,7 +128,7 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
      * adds data to location list
      * @param data all locations
      */
-    public void addLocToList(String data) {
+    private void addLocToList(String data) {
         locationsList.add(data);
     }
 
@@ -132,7 +136,7 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
      *  adds an item
      * @param data all items
      */
-    public void addItemToList(String data) {
+    private void addItemToList(String data) {
         itemsList.add(data);
     }
 }

@@ -11,16 +11,18 @@ import android.support.v7.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
+/**
+ * Class created to represent registration page of app
+ */
 public class RegistrationPage extends AppCompatActivity implements View.OnClickListener{
 
-    Button registerButton;
-    Button cancelButton;
-    EditText editPW;
-    EditText editUser;
-    EditText editName;
-    Spinner userType;
-    DatabaseReference mDatabase;
+    private Button registerButton;
+    private Button cancelButton;
+    private EditText editPW;
+    private EditText editUser;
+    private EditText editName;
+    private Spinner userType;
+    private DatabaseReference mDatabase;
     //public ArrayList<User> usersList;
 
 

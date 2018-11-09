@@ -2,6 +2,9 @@ package com.cs2340.donationtracker;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+/**
+ * Class created to represent all the information regarding a location
+ */
 @IgnoreExtraProperties
 public class Location {
     private String name;
