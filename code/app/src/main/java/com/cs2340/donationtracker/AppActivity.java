@@ -39,12 +39,12 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.bLogout) {
-            Intent goback = new Intent(this, LoginPage.class);
-            startActivity(goback);
+            Intent bLogout = new Intent(this, LoginPage.class);
+            startActivity(bLogout);
             return;
         }else if (v.getId() == R.id.locations) {
-            Intent goback = new Intent(this, AllLocations.class);
-            startActivity(goback);
+            Intent bLocations = new Intent(this, AllLocations.class);
+            startActivity(bLocations);
             return;
         } else if (v.getId() == R.id.bGoToSearch) {
             Intent bGoToSearch =  new Intent(this, SearchPage.class);

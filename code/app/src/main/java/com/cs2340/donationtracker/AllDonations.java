@@ -57,11 +57,11 @@ public class AllDonations extends AppCompatActivity implements View.OnClickListe
      * arranges the donations in the spinner
      */
     public void finishInit () {
-        String[] locationsArray = donationsList.toArray(new String[donationsList.size()]);
+        String[] donationsArray = donationsList.toArray(new String[donationsList.size()]);
 
         donations.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item,
-                locationsArray));
+                donationsArray));
 
         donationInfo.setOnClickListener(this);
         addDonationButton.setOnClickListener(this);

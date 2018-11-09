@@ -26,7 +26,7 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
     //List<String> listo;
     DatabaseReference mDatabase;
     ArrayAdapter<String> arrayAdapter;
-    List<String> arrayList;
+    List<String> searchArray;
     Button goBack;
 
 
@@ -36,7 +36,7 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_search__results);
 
         listView = (ListView) findViewById(R.id.list_view);
-        arrayList = new ArrayList<>();
+        searchArray = new ArrayList<>();
         goBack = (Button) findViewById(R.id.goBack);
         Bundle extras = getIntent().getExtras();
         String location = extras.getString("EXTRA_LOCATION");
@@ -68,7 +68,7 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
                         if (childSnapshot.child("location").getValue().toString().equals(location) &&
                         (childSnapshot.child("category").getValue().toString().equals(itemType))){
                             if (childSnapshot.child("name").getValue().toString().contains(text)) {
-                                arrayList.add(childSnapshot.child("name").getValue().toString());
+                                searchArray.add(childSnapshot.child("name").getValue().toString());
                             }
                         }
                     }
@@ -78,7 +78,7 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
                                 (childSnapshot.child("category").getValue().toString()
                                         .equals(itemType))) {
 
-                            arrayList.add(childSnapshot.child("name").getValue().toString());
+                            searchArray.add(childSnapshot.child("name").getValue().toString());
 
                         }
                     }
@@ -98,11 +98,11 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
      * method just arranges the results properly
      */
     public void finit() {
-        if(arrayList.size() == 0) {
+        if(searchArray.size() == 0) {
             String noResults = "No Results Found";
-            arrayList.add(noResults);
+            searchArray.add(noResults);
         }
-        String[] locationsArray = arrayList.toArray(new String[arrayList.size()]);
+        String[] locationsArray = searchArray.toArray(new String[searchArray.size()]);
         ArrayAdapter<String> arrayAdapter;
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 locationsArray);
@@ -114,7 +114,7 @@ public class Search_Results extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         if (v.getId() == R.id.goBack) {
             Intent searchPage = new Intent(this, SearchPage.class);
-            arrayList.clear();
+            searchArray.clear();
             startActivity(searchPage);
             return;
         }
