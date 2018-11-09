@@ -1,5 +1,6 @@
 package com.cs2340.donationtracker;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -14,6 +15,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.model.Marker;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -26,11 +32,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     /** holds the map object returned from Google */
     private GoogleMap mMap;
+    DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -53,10 +63,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         //mMap.getUiSettings().setZoomControlsEnabled(true);
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
+//        LatLng sydney = new LatLng(-34, 151);
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        addLocs();
         //reference to our GRASP Controller interface to the model
         //final DataServiceFacade dataService = DataServiceFacade.getInstance();
 
@@ -102,37 +112,75 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
     }
 
+    private void addLocs() {
+
+        mDatabase.child("locations").addListenerForSingleValueEvent(new ValueEventListener() {
+            double lat;
+            double lng;
+            String locName;
+            String number;
+            LatLng locO;
+            //int i = 1;
+            //String iStr;
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                    //iStr = Integer.toString(i);
+                    lat =  Double.valueOf(childSnapshot.child("latitude").getValue().toString());
+                    lng = Double.valueOf(childSnapshot.child("longitude").getValue().toString());
+                    locName = childSnapshot.child("name").getValue().toString();
+                    number = childSnapshot.child("phone").getValue().toString();
+                    locO = new LatLng(lat, lng);
+                    mMap.addMarker(new MarkerOptions()
+                            .position(locO)
+                            .title(locName)
+                            .snippet(number));
+                    //i++;
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(locO));
+                }
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(locO));
+
+            }
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+    }
+
     /**
      * This class implements a custom layout for the pin
      */
-//    class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
-//
-//        private final View myContentsView;
-//
-//        /**
-//         * Make the adapter
-//         */
-//        CustomInfoWindowAdapter(){
-//            // hook up the custom layout view in res/custom_map_pin_layout.xml
-//            myContentsView = getLayoutInflater().inflate(R.layout.custom_map_pin_layout, null);
-//        }
-//
-//        @Override
-//        public View getInfoContents(Marker marker) {
-//
-//            TextView tvTitle = ((TextView)myContentsView.findViewById(R.id.title));
-//            tvTitle.setText(marker.getTitle());
-//            TextView tvSnippet = ((TextView)myContentsView.findViewById(R.id.snippet));
-//            tvSnippet.setText(marker.getSnippet());
-//
-//            return myContentsView;
-//        }
-//
-//        @Override
-//        public View getInfoWindow(Marker marker) {
-//            // TODO Auto-generated method stub
-//            return null;
-//        }
-//
-//    }
+    class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
+
+        private final View myContentsView;
+
+        /**
+         * Make the adapter
+         */
+        CustomInfoWindowAdapter(){
+            // hook up the custom layout view in res/custom_map_pin_layout.xml
+            myContentsView = getLayoutInflater().inflate(R.layout.custom_map_pin_layout, null);
+        }
+
+        @Override
+        public View getInfoContents(Marker marker) {
+
+            TextView tvTitle = ((TextView)myContentsView.findViewById(R.id.title));
+            tvTitle.setText(marker.getTitle());
+            TextView tvSnippet = ((TextView)myContentsView.findViewById(R.id.snippet));
+            tvSnippet.setText(marker.getSnippet());
+
+            return myContentsView;
+        }
+
+        @Override
+        public View getInfoWindow(Marker marker) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+    }
 }

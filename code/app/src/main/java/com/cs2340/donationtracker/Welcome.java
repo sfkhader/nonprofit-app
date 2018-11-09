@@ -1,26 +1,19 @@
 package com.cs2340.donationtracker;
 
 import android.content.Intent;
-import android.renderscript.Sampler;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
 import android.widget.EditText;
-import android.app.Activity;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ChildEventListener;
-
 
 
 public class Welcome extends AppCompatActivity implements View.OnClickListener{
@@ -34,7 +27,7 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_welcome);
 
         //this will look through the activity xml and find the View that matches editUser
         //and editPW, and will set it to the variables on the left.
