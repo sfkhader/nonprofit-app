@@ -13,6 +13,7 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
     Button bLogout;
     Button bLocations;
     Button bGoToSearch;
+    Button bMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +23,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         bLogout = (Button) findViewById(R.id.bLogout);
         bLocations = (Button) findViewById(R.id.locations);
         bGoToSearch = (Button) findViewById(R.id.bGoToSearch);
-        bGoToSearch.setOnClickListener(this);
+        bMap = (Button) findViewById(R.id.map);
 
+        bGoToSearch.setOnClickListener(this);
+        bMap.setOnClickListener(this);
         bLogout.setOnClickListener(this);
         bLocations.setOnClickListener(this);
     }
@@ -46,6 +49,10 @@ public class AppActivity extends AppCompatActivity implements View.OnClickListen
         } else if (v.getId() == R.id.bGoToSearch) {
             Intent bGoToSearch =  new Intent(this, SearchPage.class);
             startActivity(bGoToSearch);
+            return;
+        } else if (v.getId() == R.id.map) {
+            Intent bMap =  new Intent(this, MapsActivity.class);
+            startActivity(bMap);
             return;
         }
     }
