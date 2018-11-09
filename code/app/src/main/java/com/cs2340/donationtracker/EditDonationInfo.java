@@ -81,15 +81,15 @@ public class EditDonationInfo extends AppCompatActivity implements View.OnClickL
                     textTimeStamp.getText().toString(),
                     textLocation.getText().toString());
             mDatabase.child("donations").child(textName.getText().toString()).setValue(newDonation);
-            Intent goback = new Intent(this, DonationInfoActivity.class);
+            Intent goBack = new Intent(this, DonationInfoActivity.class);
             if ("none".equals(getIntent().getStringExtra("EXTRA_DONATION"))) {
-                goback.putExtra("EXTRA_DONATION", newDonation.getName());
+                goBack.putExtra("EXTRA_DONATION", newDonation.getName());
             } else {
-                goback.putExtra("EXTRA_DONATION", getIntent().getStringExtra("EXTRA_DONATION"));
+                goBack.putExtra("EXTRA_DONATION", getIntent().getStringExtra("EXTRA_DONATION"));
             }
 
             finish();
-            startActivity(goback);
+            startActivity(goBack);
         }
     }
 }

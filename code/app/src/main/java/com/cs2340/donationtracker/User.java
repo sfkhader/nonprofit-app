@@ -8,7 +8,7 @@ public class User {
     private String password;
     private String userType;
 
-    //Default constructor w/ no args is needed for firebase
+    //Default constructor w/ no args is needed for Firebase
 
     /**
      * Constructor for User
@@ -28,7 +28,7 @@ public class User {
         this.userType = userType;
     }
 
-    //Public getters are needed for firebase to accept our object
+    //Public getters are needed for Firebase to accept our object
 
     /**
      *

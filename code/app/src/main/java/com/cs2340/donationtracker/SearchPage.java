@@ -77,7 +77,7 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
         });
     }
 
-    //Function called once all locations have actually loaded from firebase
+    //Function called once all locations have actually loaded from Firebase
 
     /**
      * arranges the spinners on the search page
@@ -121,8 +121,8 @@ public class SearchPage extends AppCompatActivity implements View.OnClickListene
     }
 
     /**
-     * adds data to loclist
-     * @param data all locs
+     * adds data to location list
+     * @param data all locations
      */
     public void addLocToList(String data) {
         locationsList.add(data);

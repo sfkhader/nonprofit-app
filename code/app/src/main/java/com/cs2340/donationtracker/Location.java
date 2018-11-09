@@ -15,10 +15,10 @@ public class Location {
     private String phone;
     private String website;
 
-    //Default constructor w/ no args is needed for firebase
+    //Default constructor w/ no args is needed for Firebase
 
     /**
-     * Location Constuctor
+     * Location Constructor
      */
     Location() {
 
@@ -58,7 +58,7 @@ public class Location {
         this.website = website;
     }
 
-    //Public getters are needed for firebase to accept our object
+    //Public getters are needed for Firebase to accept our object
 
     /**
      *

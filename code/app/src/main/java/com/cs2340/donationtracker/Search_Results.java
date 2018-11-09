@@ -20,7 +20,7 @@ import java.util.List;
 public class Search_Results extends AppCompatActivity implements View.OnClickListener {
 
     ListView listView;
-    //List<String> listo;
+    //List<String> list;
     DatabaseReference mDatabase;
     ArrayAdapter<String> arrayAdapter;
     List<String> searchArray;

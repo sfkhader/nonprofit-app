@@ -21,10 +21,10 @@ public class Donation {
     /**
      * Donation constructor
      * @param name name
-     * @param shortDescription shortdesc
-     * @param fullDescription fulldesp
+     * @param shortDescription the short description
+     * @param fullDescription the full description
      * @param value value
-     * @param category catego
+     * @param category category
      * @param timeStamp timestamp
      * @param location location
      */
