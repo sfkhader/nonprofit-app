@@ -23,7 +23,7 @@ import com.google.firebase.database.ChildEventListener;
 
 
 
-public class Login extends AppCompatActivity implements View.OnClickListener{
+public class Welcome extends AppCompatActivity implements View.OnClickListener{
 
     Button loginButton, bCancel;
     EditText editPW, editUser;
@@ -66,12 +66,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
                         if (childSnapshot.getKey().equals(editUser.getText().toString())
                                 && (childSnapshot.child("password").getValue().toString().equals(editPW.getText().toString()))) {
-                            Intent openApp = new Intent(Login.this, AppActivity.class);
+                            Intent openApp = new Intent(Welcome.this, AppActivity.class);
                             startActivity(openApp);
                             return;
                         }
                     }
-                    Toast.makeText(Login.this,
+                    Toast.makeText(Welcome.this,
                             "Wrong username or password.",
                             Toast.LENGTH_LONG).show();
                 }
