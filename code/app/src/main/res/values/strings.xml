@@ -2,5 +2,4 @@
     <string name="app_name">DonationTracker</string>
     <string name="title_activity_search_page">SearchPage</string>
     <string name="title_activity_search__results">Search_Results</string>
-    <string name="title_activity_maps">Map</string>
 </resources>
