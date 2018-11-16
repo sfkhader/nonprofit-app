@@ -27,7 +27,7 @@ public class StephenUnitTest {
     @Before
     public void setUp() {
          donationManager = new DonationManager(databaseMock);
-         when(donationManager.getDonation("bread")).thenReturn(new Donation("bread",
+         when(databaseMock.getDonation("bread")).thenReturn(new Donation("bread",
                  "nice bread",
                  "freshly made bread",
                  "$9904",
@@ -35,7 +35,7 @@ public class StephenUnitTest {
                  "12:04",
                  "AFD Station 4"));
 
-         when(donationManager.getDonation("banana")).thenReturn(null);
+         when(databaseMock.getDonation("banana")).thenReturn(null);
     }
 
     @Rule
