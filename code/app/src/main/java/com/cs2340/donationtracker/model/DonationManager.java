@@ -23,7 +23,10 @@ public class DonationManager {
     }
 
     public ArrayList<String> getDonationNames() {
-        return donationDatabase.getDonationNames();
+
+        ArrayList<String> returnedList = donationDatabase.getDonationNames();
+        if (returnedList.size() == 0) throw new IllegalStateException("Nothing Found");
+        else return returnedList;
     }
 
     public Set<String> getDonationCategories() {

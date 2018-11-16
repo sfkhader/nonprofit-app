@@ -38,7 +38,7 @@ public class Location {
      * @param website website
      *
      */
-    Location(String name, String latitude, String longitude,
+    public Location(String name, String latitude, String longitude,
              String streetAddress, String city, String state, String zip,
              String type, String phone, String website) {
         this.name = name;

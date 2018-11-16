@@ -1,8 +1,10 @@
 package com.cs2340.donationtracker.model;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.List;
 
-class LocationManager {
+public class LocationManager {
 
     //Instance of Firebase location database
     private final FirebaseLocationDatabase locationDatabase;
@@ -10,12 +12,18 @@ class LocationManager {
     public LocationManager() {
         locationDatabase = new FirebaseLocationDatabase();
     }
+    public LocationManager(FirebaseLocationDatabase db) { locationDatabase = db; }
 
     public List<String> getLocationNames() {
         return locationDatabase.getLocationNames();
     }
 
     public Location getLocation(int locationID) {
-        return locationDatabase.getLocation(locationID);
+        if (locationID <= 0) return null;
+        else {
+            Location toReturn = locationDatabase.getLocation(locationID);
+            if (toReturn == null) return null;
+            else return toReturn;
+        }
     }
 }
