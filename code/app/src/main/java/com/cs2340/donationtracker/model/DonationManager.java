@@ -3,13 +3,16 @@ package com.cs2340.donationtracker.model;
 import java.util.ArrayList;
 import java.util.Set;
 
-class DonationManager {
+public class DonationManager {
 
     //Instance of Firebase location database
     private final FirebaseDonationDatabase donationDatabase;
 
     public DonationManager() {
         donationDatabase = new FirebaseDonationDatabase();
+    }
+    public DonationManager(FirebaseDonationDatabase databaseReference) {
+        donationDatabase = databaseReference;
     }
 
     public void addDonation(String name, String shortDescription, String fullDescription,
@@ -36,6 +39,13 @@ class DonationManager {
     }
 
     public Donation getDonation(String donationName) {
+        if (donationName == null) {
+            throw new IllegalArgumentException("Null parameter received.");
+        }
+        if ("".equals(donationName)) {
+            throw new IllegalArgumentException("Empty string passed as parameter.");
+        }
+
         return donationDatabase.getDonation(donationName);
     }
 }

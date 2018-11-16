@@ -21,7 +21,7 @@ public class Donation {
     public Donation() {
     }
 
-    Donation(String name, String shortDescription, String fullDescription,
+    public Donation(String name, String shortDescription, String fullDescription,
              String value, String category, String timeStamp, String location) {
         this.name = name;
         this.shortDescription = shortDescription;
