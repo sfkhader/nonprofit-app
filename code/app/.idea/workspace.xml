@@ -61,6 +61,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="ShahnaazUnitTest1.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/cs2340/donationtracker/ShahnaazUnitTest1.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -78,6 +79,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
               <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+=======
+      <file leaf-file-name="DonationManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cs2340/donationtracker/model/DonationManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+>>>>>>> 6132047bc8e29b6f487bb802fe4cc7d9264edf31
             </state>
           </provider>
         </entry>
@@ -96,11 +104,28 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="RwanJUnitTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/androidTest/java/com/cs2340/donationtracker/RwanJUnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="446">
               <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+=======
+      <file leaf-file-name="StephenUnitTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/cs2340/donationtracker/StephenUnitTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShahnaazUnitTest1.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/cs2340/donationtracker/ShahnaazUnitTest1.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+>>>>>>> 6132047bc8e29b6f487bb802fe4cc7d9264edf31
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,6 +136,7 @@
       <file leaf-file-name="FirebaseUserDatabase.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cs2340/donationtracker/model/FirebaseUserDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="64">
               <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
             </state>
@@ -122,6 +148,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="590">
               <caret line="69" column="5" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="69" selection-end-column="5" />
+=======
+            <state relative-caret-position="135">
+              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+>>>>>>> 6132047bc8e29b6f487bb802fe4cc7d9264edf31
             </state>
           </provider>
         </entry>
@@ -2666,21 +2699,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ShahnaazUnitTest - 2018.11.16 at 00h 41m 49s.xml">
-      <configuration name="ShahnaazUnitTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="ShahnaazUnitTest - 2018.11.16 at 00h 56m 17s.xml">
-      <configuration name="ShahnaazUnitTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="ShahnaazUnitTest - 2018.11.16 at 01h 00m 03s.xml">
-      <configuration name="ShahnaazUnitTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="ShahnaazUnitTest - 2018.11.16 at 01h 00m 42s.xml">
-      <configuration name="ShahnaazUnitTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="ShahnaazUnitTest - 2018.11.16 at 01h 01m 16s.xml">
-      <configuration name="ShahnaazUnitTest" configurationId="AndroidJUnit" />
-    </history-entry>
     <history-entry file="ShahnaazJUnitTest - 2018.11.16 at 01h 12m 56s.xml">
       <configuration name="ShahnaazJUnitTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
@@ -2696,6 +2714,21 @@
     <history-entry file="StephenUnitTest - 2018.11.16 at 02h 37m 59s.xml">
       <configuration name="StephenUnitTest" configurationId="AndroidJUnit" />
     </history-entry>
+    <history-entry file="ShahnaazUnitTest1 - 2018.11.16 at 03h 06m 53s.xml">
+      <configuration name="ShahnaazUnitTest1" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="StephenUnitTest - 2018.11.16 at 03h 10m 22s.xml">
+      <configuration name="StephenUnitTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="ShahnaazUnitTest1 - 2018.11.16 at 03h 10m 37s.xml">
+      <configuration name="ShahnaazUnitTest1" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="ShahnaazUnitTest1 - 2018.11.16 at 03h 12m 52s.xml">
+      <configuration name="ShahnaazUnitTest1" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="ShahnaazUnitTest1 - 2018.11.16 at 03h 23m 17s.xml">
+      <configuration name="ShahnaazUnitTest1" configurationId="AndroidJUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -2707,7 +2740,12 @@
       <window_info id="Image Layers" order="7" />
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.33221477" side_tool="true" weight="0.38603988" />
+=======
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.32539684" side_tool="true" visible="true" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.67460316" visible="true" weight="0.32941177" />
+>>>>>>> 6132047bc8e29b6f487bb802fe4cc7d9264edf31
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="11" />
@@ -2715,8 +2753,13 @@
       <window_info id="Captures" order="5" weight="0.25" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="4" />
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21409395" />
       <window_info anchor="bottom" id="Build" order="10" sideWeight="0.6677852" weight="0.38603988" />
+=======
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24908425" />
+      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.8070818" weight="0.4364706" />
+>>>>>>> 6132047bc8e29b6f487bb802fe4cc7d9264edf31
       <window_info anchor="right" id="Gradle" order="6" weight="0.32967034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
@@ -2956,6 +2999,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/test/java/com/cs2340/donationtracker/TahirahUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -2963,6 +3007,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 6132047bc8e29b6f487bb802fe4cc7d9264edf31
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cs2340/donationtracker/model/Location.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
@@ -2970,10 +3016,24 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/androidTest/java/com/cs2340/donationtracker/RwanJUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
           <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cs2340/donationtracker/model/DonationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cs2340/donationtracker/model/LocationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+>>>>>>> 6132047bc8e29b6f487bb802fe4cc7d9264edf31
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2982,18 +3042,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/cs2340/donationtracker/ShahnaazUnitTest1.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state>
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="60">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+>>>>>>> 6132047bc8e29b6f487bb802fe4cc7d9264edf31
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/cs2340/donationtracker/RwanUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="240">
           <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+=======
+        <state relative-caret-position="285">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+>>>>>>> 6132047bc8e29b6f487bb802fe4cc7d9264edf31
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1651#1652#0" expanded="true" />
