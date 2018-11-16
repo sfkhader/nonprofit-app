@@ -18,7 +18,8 @@ class FirebaseUserDatabase{
     }
 
     public void addUser(String username, User user) {
-        userDatabase.child(username).setValue(user);
+
+        if (username !=null) userDatabase.child(username).setValue(user);
     }
 
     public void getUserPassword(String username, final IFirebaseCallback callback) {
