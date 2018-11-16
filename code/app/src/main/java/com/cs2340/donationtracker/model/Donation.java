@@ -21,6 +21,17 @@ public class Donation {
     public Donation() {
     }
 
+    /**
+     * Creates a new Donation.
+     *
+     * @param name donation name
+     * @param shortDescription short description of item
+     * @param fullDescription full description of item
+     * @param value monetary value of item
+     * @param category where this item will be organized
+     * @param timeStamp when this item arrived
+     * @param location where this item was donated to
+     */
     public Donation(String name, String shortDescription, String fullDescription,
              String value, String category, String timeStamp, String location) {
         this.name = name;

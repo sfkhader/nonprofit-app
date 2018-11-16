@@ -67,9 +67,9 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
     }
 
     /**
-     * @param loc
-     * @param itemT
-     * @param texto
+     * @param loc location to search through
+     * @param itemT the category to search
+     * @param texto searching text
      */
     private void searchDB(final String loc, final String itemT, final String texto) {
         //List<String> listo;

@@ -22,15 +22,59 @@ import dagger.Component;
 @Singleton
 @Component(modules =  {AppModule.class, ServicesModule.class})
 public interface ServicesComponent {
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (DonationInfoActivity activity);
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (DonationListActivity activity);
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (EditDonationActivity activity);
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (ItemSearchActivity activity);
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (ItemSearchResultsActivity activity);
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (LocationInfoActivity activity);
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (LocationListActivity activity);
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (LoginActivity activity);
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (MainHubActivity activity);
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (RegistrationActivity activity);
+    /**
+     * Required for Dagger2.
+     * @param activity the activity to inject to
+     */
     void inject (StartupActivity activity);
 }

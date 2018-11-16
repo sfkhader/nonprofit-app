@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Implements Firebase operations to retreive Donation information.
+ */
 public class FirebaseDonationDatabase {
 
     //Instance of Firebase
@@ -20,6 +23,9 @@ public class FirebaseDonationDatabase {
     //Up to date data snapshot of locations
     private DataSnapshot donationsData;
 
+    /**
+     * Creates a new FirebaseDonationDatabase object.
+     */
     public FirebaseDonationDatabase() {
         donationDatabase = FirebaseDatabase.getInstance().getReference().child("donations");
         donationDatabase.addValueEventListener(new ValueEventListener() {
@@ -33,10 +39,20 @@ public class FirebaseDonationDatabase {
         });
     }
 
+    /**
+     * Adds a donation to the database.
+     *
+     * @param donation donation to add to the database
+     */
     public void addDonation(Donation donation) {
         donationDatabase.child(donation.getName()).setValue(donation);
     }
 
+    /**
+     * Retrieves all donation names in the database.
+     *
+     * @return list of all donation names in the database
+     */
     public ArrayList<String> getDonationNames() {
         ArrayList<String> donations = new ArrayList<>();
 
@@ -47,6 +63,11 @@ public class FirebaseDonationDatabase {
         return donations;
     }
 
+    /**
+     * Retrieves all donation categories in the database.
+     *
+     * @return list of all donation category names in the database
+     */
     public Set<String> getDonationCategories() {
         Set<String> categories = new HashSet<>();
 
@@ -57,6 +78,12 @@ public class FirebaseDonationDatabase {
         return categories;
     }
 
+    /**
+     * Searches for an item in the database based on name.
+     *
+     * @param donationName name of donation to search for
+     * @return a list of all donations matching the search term
+     */
     public ArrayList<String> searchByName(String donationName) {
 
         //This function can return multiple results, but as it is currently coded,
@@ -75,6 +102,12 @@ public class FirebaseDonationDatabase {
         return  results;
     }
 
+    /**
+     * Gathers all donations in the database which fall under a specified category.
+     *
+     * @param donationCategory category to get items from
+     * @return list of all Donations in the category
+     */
     public ArrayList<String> searchByCategory(String donationCategory) {
         ArrayList<String> results = new ArrayList<>();
 
@@ -87,6 +120,12 @@ public class FirebaseDonationDatabase {
         return results;
     }
 
+    /**
+     * Retrieves a donation from the database based on its name.
+     *
+     * @param itemName name of Donation to retrieve info for
+     * @return Donation object of donation matching the given name
+     */
     public Donation getDonation(String itemName) {
         return donationsData.child(itemName).getValue(Donation.class);
     }
