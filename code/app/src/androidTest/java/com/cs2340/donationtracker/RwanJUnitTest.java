@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+@RunWith(AndroidJUnit4.class)
 public class RwanJUnitTest {
     @Rule
     public ActivityTestRule<ItemSearchActivity> mActivityRule =
@@ -34,4 +35,5 @@ public class RwanJUnitTest {
     public void searchByCategory_isCorrect() {
         Espresso.onView(ViewMatchers.withId(R.id.searchText)).perform(ViewActions.typeText("Category"));
         Espresso.onView(ViewMatchers.withId(R.id.bSearch)).perform(ViewActions.click());
+    }
 }
