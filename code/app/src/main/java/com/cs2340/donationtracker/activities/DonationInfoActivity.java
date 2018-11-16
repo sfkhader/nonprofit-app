@@ -63,9 +63,6 @@ public class DonationInfoActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), DonationListActivity.class);
-        intent.putExtra("EXTRA_DONATION", getIntent().getStringExtra("EXTRA_DONATION"));
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        finish();
     }
 }

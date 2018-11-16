@@ -34,7 +34,7 @@
         android:id="@+id/selectItem"
         android:layout_width="342dp"
         android:layout_height="36dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectItemLabel3" />
@@ -76,7 +76,7 @@
         android:id="@+id/bSearch"
         android:layout_width="134dp"
         android:layout_height="54dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:text="Search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchText" />
@@ -85,15 +85,16 @@
         android:id="@+id/bBack"
         android:layout_width="134dp"
         android:layout_height="54dp"
+        android:layout_marginStart="8dp"
         android:text="Back"
-        app:layout_constraintTop_toBottomOf="@+id/searchText"
-        tools:layout_editor_absoluteX="206dp" />
+        app:layout_constraintStart_toEndOf="@+id/bSearch"
+        app:layout_constraintTop_toBottomOf="@+id/searchText" />
 
     <EditText
         android:id="@+id/searchText"
         android:layout_width="341dp"
         android:layout_height="52dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"

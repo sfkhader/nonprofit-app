@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -108,6 +109,15 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
                 locationsArray);
         listView.setAdapter(arrayAdapter);
         goBack.setOnClickListener(this);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                Intent viewDonation = new Intent(ItemSearchResultsActivity.this, DonationInfoActivity.class);
+                viewDonation.putExtra("EXTRA_DONATION", parent.getItemAtPosition(position).toString());
+                startActivity(viewDonation);
+            }
+        });
     }
 
     @Override
@@ -118,6 +128,5 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
             startActivity(searchPage);
             return;
         }
-
     }
 }
