@@ -7,7 +7,7 @@ import java.util.List;
 public class LocationManager {
 
     //Instance of Firebase location database
-    private final FirebaseLocationDatabase locationDatabase;
+    private FirebaseLocationDatabase locationDatabase;
 
     public LocationManager() {
         locationDatabase = new FirebaseLocationDatabase();

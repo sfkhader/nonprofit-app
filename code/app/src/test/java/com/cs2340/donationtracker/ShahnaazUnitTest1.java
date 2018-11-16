@@ -28,7 +28,7 @@ public class ShahnaazUnitTest1 {
     @Before
     public void setUp() {
         locationManager = new LocationManager(databaseMock);
-        when(locationManager.getLocation(5)).thenReturn(new Location("nice location",
+        when(databaseMock.getLocation(5)).thenReturn(new Location("nice location",
                 "5",
                 "5",
                 "123 nice street",
@@ -38,8 +38,8 @@ public class ShahnaazUnitTest1 {
                 "dropoff location",
                 "1231231234",
                 "www.nicelocation.com"));
-        when(locationManager.getLocation(-1)).thenReturn(null);
-        when(locationManager.getLocation(10)).thenReturn(null);
+        when(databaseMock.getLocation(-1)).thenReturn(null);
+        when(databaseMock.getLocation(10)).thenReturn(null);
     }
 
     @Rule
