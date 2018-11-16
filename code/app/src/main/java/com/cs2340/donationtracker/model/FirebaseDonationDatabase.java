@@ -61,8 +61,9 @@ public class FirebaseDonationDatabase {
 
         //This function can return multiple results, but as it is currently coded,
         //it will only return exact matches, so for us this means only one donation.
-        ArrayList<String> results = new ArrayList<>();
 
+        ArrayList<String> results = new ArrayList<>();
+        if (donationName == null) return results;
         for (DataSnapshot childSnapshot : donationsData.getChildren()) {
             if (childSnapshot.child("name").getValue().toString().equals(donationName)) {
                 results.add(childSnapshot.child("name").getValue().toString());
