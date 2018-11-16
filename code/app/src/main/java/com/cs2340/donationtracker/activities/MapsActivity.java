@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.cs2340.donationtracker.R;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -163,7 +162,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
         // hook up the custom layout view in res/custom_map_pin_layout.xml
-        private final View myContentsView = getLayoutInflater().inflate(R.layout.custom_map_pin_layout, null);
+        private final View myContentsView = getLayoutInflater().inflate(
+                R.layout.custom_map_pin_layout, null);
 
         @Override
         public View getInfoContents(Marker marker) {

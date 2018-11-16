@@ -84,8 +84,10 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
                 //checks for NOT ALL LOCATIONS
                 if (!"All Locations".equals(location)) {
                     for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                        if (childSnapshot.child("location").getValue().toString().equals(location) &&
-                                (childSnapshot.child("category").getValue().toString().equals(itemType))){
+                        if (childSnapshot.child("location")
+                                .getValue().toString().equals(location) &&
+                                (childSnapshot.child("category")
+                                        .getValue().toString().equals(itemType))){
                             if (childSnapshot.child("name").getValue().toString().contains(text)) {
                                 arrayList.add(childSnapshot.child("name").getValue().toString());
                             }

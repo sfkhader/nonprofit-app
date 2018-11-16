@@ -1,12 +1,8 @@
 package com.cs2340.donationtracker;
 
-import com.cs2340.donationtracker.model.Donation;
 import com.cs2340.donationtracker.model.Location;
-import com.cs2340.donationtracker.model.DonationManager;
 import com.cs2340.donationtracker.model.LocationManager;
 import com.cs2340.donationtracker.model.FirebaseLocationDatabase;
-
-import net.bytebuddy.pool.TypePool;
 
 import org.junit.Before;
 import org.junit.Rule;

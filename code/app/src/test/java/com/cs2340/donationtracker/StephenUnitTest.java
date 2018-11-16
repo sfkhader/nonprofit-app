@@ -4,8 +4,6 @@ import com.cs2340.donationtracker.model.Donation;
 import com.cs2340.donationtracker.model.DonationManager;
 import com.cs2340.donationtracker.model.FirebaseDonationDatabase;
 
-import net.bytebuddy.pool.TypePool;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

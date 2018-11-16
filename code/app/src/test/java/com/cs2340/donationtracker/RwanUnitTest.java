@@ -1,12 +1,6 @@
 package com.cs2340.donationtracker;
-import com.cs2340.donationtracker.model.Donation;
 import com.cs2340.donationtracker.model.FirebaseDonationDatabase;
-import com.cs2340.donationtracker.model.Location;
 import com.cs2340.donationtracker.model.DonationManager;
-import com.cs2340.donationtracker.model.LocationManager;
-import com.cs2340.donationtracker.model.FirebaseLocationDatabase;
-
-import net.bytebuddy.pool.TypePool;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -15,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
