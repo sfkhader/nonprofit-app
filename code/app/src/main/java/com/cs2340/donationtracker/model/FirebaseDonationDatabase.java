@@ -57,7 +57,7 @@ public class FirebaseDonationDatabase {
         return categories;
     }
 
-    public ArrayList<String> searchAllByName(String donationName) {
+    public ArrayList<String> searchByName(String donationName) {
 
         //This function can return multiple results, but as it is currently coded,
         //it will only return exact matches, so for us this means only one donation.

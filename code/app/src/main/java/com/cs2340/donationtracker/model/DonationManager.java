@@ -33,11 +33,23 @@ public class DonationManager {
         return donationDatabase.getDonationCategories();
     }
 
-    public ArrayList<String> searchAllByName(String donationName) {
-        return donationDatabase.searchAllByName(donationName);
+    public ArrayList<String> searchByName(String donationName) {
+        if (donationName == null) {
+            throw new IllegalArgumentException("Null parameter received.");
+        }
+        if ("".equals(donationName)) {
+            throw new IllegalArgumentException("Empty string passed as parameter.");
+        }
+        return donationDatabase.searchByName(donationName);
     }
 
     public ArrayList<String> searchByCategory(String donationCategory) {
+        if (donationCategory == null) {
+            throw new IllegalArgumentException("Null parameter received.");
+        }
+        if ("".equals(donationCategory)) {
+            throw new IllegalArgumentException("Empty string passed as parameter.");
+        }
         return donationDatabase.searchByCategory(donationCategory);
     }
 

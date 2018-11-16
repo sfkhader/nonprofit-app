@@ -1,10 +1,6 @@
 package com.cs2340.donationtracker;
-
-import com.cs2340.donationtracker.model.Donation;
-import com.cs2340.donationtracker.model.DonationManager;
 import com.cs2340.donationtracker.model.FirebaseDonationDatabase;
-
-import net.bytebuddy.pool.TypePool;
+import com.cs2340.donationtracker.model.DonationManager;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -13,12 +9,14 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import java.util.ArrayList;
+
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
 
 /**
- * JUNIT to test getDonationNames()
+ * JUnit for searchByName method for Donations
  */
 public class SamiaUnitTest {
     DonationManager donationManager;
@@ -27,12 +25,13 @@ public class SamiaUnitTest {
     FirebaseDonationDatabase databaseMock;
 
     @Before
-    public void whenCalledVerfied() {
-         myList = mock(MyList.class);
-        doNothing().when(myList).add(isA(Integer.class), isA(String.class));
-        myList.add(0, "");
+    public void setUp() {
+        donationManager = new DonationManager(databaseMock);
+        ArrayList<String> donations = new ArrayList<>();
+        donations.add("apple");
+        when(donationManager.searchByName("apple")).thenReturn(donations);
 
-        verify(myList, times(1)).add(0, "");
+        when(donationManager.searchByName("orange")).thenReturn(null);
     }
 
     @Rule
@@ -41,23 +40,24 @@ public class SamiaUnitTest {
 
     @Test
     public void testItemExists()  {
-        Donation d = donationManager.getDonation("bread");
-        assertEquals("bread", d.getName());
-        assertEquals("nice bread", d.getShortDescription());
-        assertEquals("freshly made bread", d.getFullDescription());
-        assertEquals("$9904", d.getValue());
-        assertEquals("baked goods", d.getCategory());
-        assertEquals("12:04", d.getTimeStamp());
-        assertEquals("AFD Station 4", d.getLocation());
+        ArrayList<String> donations = new ArrayList<>();
+        donations.add("apple");
+        ArrayList d = donationManager.searchByName("apple");
+        assertEquals(donations, d);
+    }
+
+    @Test
+    public void testItemMissing() {
+        assertNull(donationManager.searchByName("orange"));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testNullParameter() {
-        donationManager.addDonation(null, null, null, null, null, null, null);
+        donationManager.searchByName(null);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testEmptyString() {
-        donationManager.addDonation("", "", "", "", "", "", "");
+        donationManager.searchByName("");
     }
 }
