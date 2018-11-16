@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-class FirebaseDonationDatabase {
+public class FirebaseDonationDatabase {
 
     //Instance of Firebase
     private final DatabaseReference donationDatabase;

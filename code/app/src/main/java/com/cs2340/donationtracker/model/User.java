@@ -3,7 +3,7 @@ package com.cs2340.donationtracker.model;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
-class User {
+public class User {
     private String realName;
     private String password;
     private String userType;
@@ -12,7 +12,7 @@ class User {
     public User() {
     }
 
-    User(String realName, String password, String userType) {
+    public User(String realName, String password, String userType) {
         this.realName = realName;
         this.password = password;
         this.userType = userType;

@@ -8,7 +8,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-class FirebaseUserDatabase{
+public class FirebaseUserDatabase{
 
     //Instance of Firebase
     private final DatabaseReference userDatabase;
