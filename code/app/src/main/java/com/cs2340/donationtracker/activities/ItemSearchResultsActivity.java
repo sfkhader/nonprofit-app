@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -38,13 +37,36 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
         arrayList = new ArrayList<>();
         goBack = findViewById(R.id.goBack);
         Bundle extras = getIntent().getExtras();
+        if(extras == null) {
+            finit(false);
+        }
         String location = extras.getString("EXTRA_LOCATION");
         String itemType = extras.getString("EXTRA_ITEM");
         String text = extras.getString("EXTRA_TEXT");
-
+        boolean setupWorked = setupSearch(location, itemType, text);
+        if(!setupWorked) {
+            finit(false);
+        }
         searchDB(location, itemType, text);
 
 
+    }
+
+    /**
+     *
+     * @param loc the location to search
+     * @param item the category to search
+     * @param text the searching text
+     * @return whether the params passed in are valid
+     */
+    public boolean setupSearch(String loc, String item, String text){
+        //extras = extras;
+        if(loc == null ||
+                item == null ||
+                text == null) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -66,7 +88,7 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
                 if (!"All Locations".equals(location)) {
                     for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                         if (childSnapshot.child("location").getValue().toString().equals(location) &&
-                        (childSnapshot.child("category").getValue().toString().equals(itemType))){
+                                (childSnapshot.child("category").getValue().toString().equals(itemType))){
                             if (childSnapshot.child("name").getValue().toString().contains(text)) {
                                 arrayList.add(childSnapshot.child("name").getValue().toString());
                             }
@@ -84,7 +106,7 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
                     }
 
                 }
-                finit();
+                finit(true);
 
             }
 
@@ -98,8 +120,12 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
     /**
      * method just arranges the results properly
      */
-    private void finit() {
-        if(arrayList.isEmpty()) {
+    private void finit(boolean searched) {
+        if(!searched){
+            String errResults = "Try a different search";
+            arrayList.add(errResults);
+        }
+        if(arrayList.isEmpty() && searched) {
             String noResults = "No Results Found";
             arrayList.add(noResults);
         }
@@ -109,15 +135,6 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
                 locationsArray);
         listView.setAdapter(arrayAdapter);
         goBack.setOnClickListener(this);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
-                Intent viewDonation = new Intent(ItemSearchResultsActivity.this, DonationInfoActivity.class);
-                viewDonation.putExtra("EXTRA_DONATION", parent.getItemAtPosition(position).toString());
-                startActivity(viewDonation);
-            }
-        });
     }
 
     @Override
@@ -128,5 +145,6 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
             startActivity(searchPage);
             return;
         }
+
     }
 }
