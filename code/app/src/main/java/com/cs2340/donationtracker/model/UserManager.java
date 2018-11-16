@@ -1,11 +1,14 @@
 package com.cs2340.donationtracker.model;
 
+import android.support.annotation.Nullable;
+
 class UserManager {
 
     //Instance of Firebase user database
     private final FirebaseUserDatabase userDatabase;
 
     //Currently logged in user (null if none)
+    @Nullable
     private User currentUser;
 
     public UserManager() {
@@ -27,7 +30,7 @@ class UserManager {
                 if ((fetchedUser != null) && fetchedUser.getPassword().equals(password)) {
                     //Set the current user to newly logged in user
                     currentUser = fetchedUser;
-                    //Pass null as data becuase not needed here
+                    //Pass null as data because not needed here
                     callback.onSuccess(null);
                 } else {
                     //Password didn't match or user not found

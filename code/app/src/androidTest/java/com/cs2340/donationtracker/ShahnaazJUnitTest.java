@@ -34,8 +34,8 @@ public class ShahnaazJUnitTest {
             new ActivityTestRule<>(ItemSearchActivity.class);
 
     @Test
-    public void searchByCategory_isCorrect() {
-        Espresso.onView(ViewMatchers.withId(R.id.searchText)).perform(ViewActions.typeText("Category"));
+    public void searchByName_isCorrect() {
+        Espresso.onView(ViewMatchers.withId(R.id.searchText)).perform(ViewActions.typeText("Name"));
         Espresso.onView(ViewMatchers.withId(R.id.bSearch)).perform(ViewActions.click());
 
 

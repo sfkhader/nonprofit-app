@@ -61,12 +61,9 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
      */
     public boolean setupSearch(String loc, String item, String text){
         //extras = extras;
-        if(loc == null ||
-                item == null ||
-                text == null) {
-            return false;
-        }
-        return true;
+        return (loc != null) &&
+                (item != null) &&
+                (text != null);
     }
 
     /**
@@ -143,7 +140,6 @@ public class ItemSearchResultsActivity extends AppCompatActivity implements View
             Intent searchPage = new Intent(this, ItemSearchActivity.class);
             arrayList.clear();
             startActivity(searchPage);
-            return;
         }
 
     }

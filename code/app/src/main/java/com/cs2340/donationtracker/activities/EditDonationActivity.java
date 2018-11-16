@@ -77,15 +77,15 @@ public class EditDonationActivity extends AppCompatActivity implements View.OnCl
                     textTimeStamp.getText().toString(),
                     textLocation.getText().toString());
 
-            Intent goback = new Intent(this, DonationInfoActivity.class);
+            Intent goBack = new Intent(this, DonationInfoActivity.class);
             if ("none".equals(getIntent().getStringExtra("EXTRA_DONATION"))) {
-                goback.putExtra("EXTRA_DONATION", textName.getText().toString());
+                goBack.putExtra("EXTRA_DONATION", textName.getText().toString());
             } else {
-                goback.putExtra("EXTRA_DONATION", getIntent().getStringExtra("EXTRA_DONATION"));
+                goBack.putExtra("EXTRA_DONATION", getIntent().getStringExtra("EXTRA_DONATION"));
             }
 
             finish();
-            startActivity(goback);
+            startActivity(goBack);
         }
     }
 }

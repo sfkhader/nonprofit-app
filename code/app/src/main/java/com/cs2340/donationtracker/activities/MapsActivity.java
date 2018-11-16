@@ -131,11 +131,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                     //iStr = Integer.toString(i);
-                    lat =  Double.valueOf(Objects.requireNonNull(childSnapshot.child("latitude").getValue()).toString());
-                    lng = Double.valueOf(Objects.requireNonNull(childSnapshot.child("longitude").getValue()).toString());
-                    locName = Objects.requireNonNull(childSnapshot.child("name").getValue()).toString();
-                    number = Objects.requireNonNull(childSnapshot.child("phone").getValue()).toString();
-                    address = Objects.requireNonNull(childSnapshot.child("streetAddress").getValue().toString());
+                    lat =  Double.valueOf(Objects.requireNonNull(childSnapshot.child("latitude").
+                            getValue()).toString());
+                    lng = Double.valueOf(Objects.requireNonNull(childSnapshot.child("longitude").
+                            getValue()).toString());
+                    locName = Objects.requireNonNull(childSnapshot.child("name").getValue()).
+                            toString();
+                    number = Objects.requireNonNull(childSnapshot.child("phone").getValue()).
+                            toString();
+                    address = Objects.requireNonNull(childSnapshot.child("streetAddress").
+                            getValue().toString());
                     locO = new LatLng(lat, lng);
                     mMap.addMarker(new MarkerOptions()
                             .position(locO)

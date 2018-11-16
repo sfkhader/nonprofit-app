@@ -10,6 +10,8 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -40,9 +42,9 @@ public class SamiaUnitTest {
 
     @Test
     public void testItemExists()  {
-        ArrayList<String> donations = new ArrayList<>();
+        Collection<String> donations = new ArrayList<>();
         donations.add("apple");
-        ArrayList d = donationManager.searchByName("apple");
+        List d = donationManager.searchByName("apple");
         assertEquals(donations, d);
     }
 

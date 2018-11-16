@@ -19,11 +19,15 @@ public class LocationManager {
     }
 
     public Location getLocation(int locationID) {
-        if (locationID <= 0) return null;
-        else {
+        if (locationID <= 0) {
+            return null;
+        } else {
             Location toReturn = locationDatabase.getLocation(locationID);
-            if (toReturn == null) return null;
-            else return toReturn;
+            if (toReturn == null) {
+                return null;
+            } else {
+                return toReturn;
+            }
         }
     }
 }

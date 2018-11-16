@@ -17,6 +17,8 @@ import org.mockito.junit.MockitoRule;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -44,9 +46,9 @@ public class RwanUnitTest {
 
     @Test
     public void testItemExists()  {
-        ArrayList<String> donationList = new ArrayList<>();
+        Collection<String> donationList = new ArrayList<>();
         donationList.add("nothing");
-        ArrayList d = donationManager.searchByCategory("goodstuff");
+        List d = donationManager.searchByCategory("goodstuff");
         assertEquals(donationList, d);
     }
 
