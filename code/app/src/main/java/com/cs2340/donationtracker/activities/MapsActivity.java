@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.cs2340.donationtracker.R;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -67,6 +68,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         addLocs();
+        LatLng atlanta = new LatLng(33.7, -84.3);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(atlanta, 10));
         //reference to our GRASP Controller interface to the model
         //final DataServiceFacade dataService = DataServiceFacade.getInstance();
 
@@ -120,6 +123,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             String locName;
             String number;
             LatLng locO;
+            String address;
             //int i = 1;
             //String iStr;
             @Override
@@ -131,15 +135,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     lng = Double.valueOf(Objects.requireNonNull(childSnapshot.child("longitude").getValue()).toString());
                     locName = Objects.requireNonNull(childSnapshot.child("name").getValue()).toString();
                     number = Objects.requireNonNull(childSnapshot.child("phone").getValue()).toString();
+                    address = Objects.requireNonNull(childSnapshot.child("streetAddress").getValue().toString());
                     locO = new LatLng(lat, lng);
                     mMap.addMarker(new MarkerOptions()
                             .position(locO)
                             .title(locName)
-                            .snippet(number));
-                    //i++;
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(locO));
+                            .snippet(number + " || " + address));
                 }
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(locO));
 
             }
 
@@ -155,15 +157,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
-        private final View myContentsView;
-
-        /**
-         * Make the adapter
-         */
-        CustomInfoWindowAdapter(){
-            // hook up the custom layout view in res/custom_map_pin_layout.xml
-            myContentsView = getLayoutInflater().inflate(R.layout.custom_map_pin_layout, null);
-        }
+        // hook up the custom layout view in res/custom_map_pin_layout.xml
+        private final View myContentsView = getLayoutInflater().inflate(R.layout.custom_map_pin_layout, null);
 
         @Override
         public View getInfoContents(Marker marker) {
