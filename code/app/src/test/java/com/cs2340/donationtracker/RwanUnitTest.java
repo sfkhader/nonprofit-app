@@ -38,7 +38,7 @@ public class RwanUnitTest {
         when(donationManager.searchByCategory("badstuff")).thenReturn(null);
     }
 
-    @Rules
+    @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
 
